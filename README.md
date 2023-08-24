@@ -1,38 +1,9 @@
 <a name="readme-top"></a>
 
-<!--
-!!! IMPORTANT !!!
-This README is an example of how you could professionally present your codebase. 
-Writing documentation is a crucial part of your work as a professional software developer and cannot be ignored. 
-
-You should modify this file to match your project and remove sections that don't apply.
-
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
-
-For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
--->
 
 <div align="center">
   <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
-
+ 
   <h3><b>Microverse README Template</b></h3>
 
 </div>
@@ -208,17 +179,27 @@ Example:
 
 > Mention all of the collaborators of this project.
 
-👤 **Author1**
+👤 **Mahabub Alam**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@mahabubx7](https://github.com/mahabubx7)
+- Twitter: [@mahabub\_\_7](https://twitter.com/mahabub__7)
+- LinkedIn: [in/mahabubx7](https://linkedin.com/in/mahabubx7)
 
 👤 **Lugard Agu**
 
 - GitHub: [@lugard1](https://github.com/lugard1)
 - Twitter: [@Dsn3kings](https://twitter.com/Dsn3kings)
 - LinkedIn: [@LugardAgu](https://www.linkedin.com/in/lugardagu)
+
+👤 **Nana Vanina**
+- GitHub: [@vanina123](https://github.com/vanina123)
+- Twitter: [@Dufevan](https://twitter.com/DufeVanina)
+- LinkedIn: [Vanina](https://www.linkedin.com/in/larissa-vanina/)
+
+👤 **Kibrewossen Y Mekasha**
+
+- GitHub: [@akos29](https://github.com/akos29)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
