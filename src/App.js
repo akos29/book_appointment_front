@@ -1,10 +1,13 @@
-// import logo from './logo.svg';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Display from './components/Display';
 
 function App() {
   return (
     <div className='App'>
-      <h1>Welcome to Dream Yacht!</h1>
+      <Routes>
+        <Route exact path='/' element={<Display />} />
+      </Routes>
     </div>
   );
 }
