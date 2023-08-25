@@ -19,7 +19,13 @@ function Display() {
       ) : (
         <>
           <h1>Display yatchs!</h1>
-          <p>{error ? <b>{String(error)}</b> : <b>{String(yatchs)}</b>}</p>
+          <p>
+            {error ? (
+              <b className='text-red-500'>{String(error)}</b>
+            ) : (
+              <b>{String(yatchs)}</b>
+            )}
+          </p>
         </>
       )}
     </div>
