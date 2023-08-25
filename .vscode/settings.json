@@ -2,5 +2,5 @@
   "files.eol": "\n",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "cSpell.words": ["yatchs"]
+  "cSpell.words": ["reduxjs", "yatch", "yatchs"]
 }
