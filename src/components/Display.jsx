@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchYatchs } from '../redux/yatch/yatchSlice';
+import ReservationForm from './reservation/ReservationForm';
+import ReservationsList from './reservation/ReservationList';
 
 function Display() {
   const dispatch = useDispatch();
@@ -18,7 +20,7 @@ function Display() {
         <h1>Loading ...</h1>
       ) : (
         <>
-          <h1>Display yatchs!</h1>
+          <h1>Display yachts!</h1>
           <p>
             {error ? (
               <b className='text-red-500'>{String(error)}</b>
@@ -26,6 +28,8 @@ function Display() {
               <b>{String(yatchs)}</b>
             )}
           </p>
+          <ReservationForm />
+          <ReservationsList />
         </>
       )}
     </div>
