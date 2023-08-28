@@ -1,3 +1,4 @@
+/* eslint-disable import/extensions */
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Display from './components/Display';
