@@ -2,37 +2,37 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
-  yatchs: [],
+  yachts: [],
   loaded: false,
   loading: false,
   error: null,
 };
 
-export const fetchYatchs = createAsyncThunk('yatchs/fetchYatchs', async () => {
+export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_API_ENDPOINT}/yatchs`,
+      `${process.env.REACT_APP_API_ENDPOINT}/yachts`,
     );
-    return response.data;
+    return response.data?.data;
   } catch (error) {
     return error.response.data;
   }
 });
 
-const yatchsSlice = createSlice({
-  name: 'yatchs',
+const yachtsSlice = createSlice({
+  name: 'yachts',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchYatchs.pending, (state) => {
+    builder.addCase(fetchYachts.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(fetchYatchs.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchYachts.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.yatchs = payload;
+      state.yachts = payload;
       state.loaded = true;
     });
-    builder.addCase(fetchYatchs.rejected, (state, { payload }) => {
+    builder.addCase(fetchYachts.rejected, (state, { payload }) => {
       state.loading = false;
       state.error = payload || 'Something went wrong!';
       state.loaded = true;
@@ -40,4 +40,4 @@ const yatchsSlice = createSlice({
   },
 });
 
-export default yatchsSlice.reducer;
+export default yachtsSlice.reducer;

@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchYatchs } from '../redux/yatch/yatchSlice';
+import { fetchYachts } from '../redux/yacht/yachtSlice';
 
 function Display() {
   const dispatch = useDispatch();
-  const { yatchs, loading, error, loaded } = useSelector(
-    (store) => store.yatchs,
+  const { yachts, loading, error, loaded } = useSelector(
+    (store) => store.yachts,
   );
 
   useEffect(() => {
-    if (!loaded) dispatch(fetchYatchs());
+    if (!loaded) dispatch(fetchYachts());
   }, [dispatch, loaded]);
 
   return (
@@ -19,13 +19,19 @@ function Display() {
       ) : (
         <>
           <h1>Display yatchs!</h1>
-          <p>
+          <div>
             {error ? (
               <b className='text-red-500'>{String(error)}</b>
             ) : (
-              <b>{String(yatchs)}</b>
+              <div>
+                {yachts.map((y) => (
+                  <div key={y.id}>
+                    <h4>{y.model}</h4>
+                  </div>
+                ))}
+              </div>
             )}
-          </p>
+          </div>
         </>
       )}
     </div>
