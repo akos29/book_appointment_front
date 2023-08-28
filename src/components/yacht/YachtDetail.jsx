@@ -38,7 +38,7 @@ function YachtDetail() {
           type='button'
           className='bg-blue-500 text-white rounded px-4 py-2'
         >
-          Reserve
+          Make Reserve
         </button>
       </div>
     </div>
