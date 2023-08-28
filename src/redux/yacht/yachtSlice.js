@@ -13,7 +13,7 @@ export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
     const response = await axios.get(
       `${process.env.REACT_APP_API_ENDPOINT}/yachts`,
     );
-    return response.data?.data;
+    return response.data;
   } catch (error) {
     return error.response.data;
   }
