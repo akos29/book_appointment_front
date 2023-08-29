@@ -9,10 +9,10 @@ function YachtDetail({ yachtId, handleView }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (yacht?.id) {
+    if (yacht.id) {
       dispatch(getYacht(yachtId));
     }
-  }, [dispatch, yachtId]);
+  }, [dispatch, yachtId, yacht.id]);
 
   return yachtLoading ? (
     <h1>Loading ...</h1>
@@ -32,19 +32,21 @@ function YachtDetail({ yachtId, handleView }) {
           ${yacht?.price} for {yacht?.user_id}
         </p>
         <p className='text-gray-600 mb-2'>Available on: {yacht?.created_at}</p>
-        <button
-          type='button'
-          className='bg-blue-500 text-white rounded px-4 py-2'
-        >
-          Make Reserve
-        </button>
-        <button
-          className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded'
-          onClick={() => handleView(false)}
-          type='button'
-        >
-          Back
-        </button>
+        <div className='flex space-x-2'>
+          <button
+            type='button'
+            className='bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300'
+          >
+            Make Reserve
+          </button>
+          <button
+            className='bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-gray-300'
+            onClick={() => handleView(false)}
+            type='button'
+          >
+            Back
+          </button>
+        </div>
       </div>
     </div>
   );
