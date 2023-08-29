@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import yatchReducer from './yatch/yatchSlice';
-import reservationReducer from './reservation/reservationSlice';
+import yachtReducer from './yacht/yachtSlice';
 
 const store = configureStore({
   reducer: {
-    yatchs: yatchReducer,
-    reservation: reservationReducer,
+    yachts: yachtReducer,
   },
 });
 
