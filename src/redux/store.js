@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import yatchReducer from './yatch/yatchSlice';
+import yachtReducer from './yacht/yachtSlice';
 
 const store = configureStore({
   reducer: {
-    yatchs: yatchReducer,
+    yachts: yachtReducer,
   },
 });
 

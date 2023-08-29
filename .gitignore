@@ -1,1 +1,13 @@
 node_modules
+
+*error.log
+
+# env
+.env
+.env*
+!.env.sample
+
+# Others
+.DS_Store
+.exe
+.ini
