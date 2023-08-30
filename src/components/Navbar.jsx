@@ -1,42 +1,42 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { logout } from '../redux/auth/authSlice';
 
 function Navbar() {
   const dispatch = useDispatch();
-  const { isAuthenticated, user } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.auth);
 
   return (
-    <header>
-      <nav>
-        <ul>
+    <nav className='nav-cont'>
+      <h2>Yatch</h2>
+      <ul>
+        <li className='nav-item'>
+          <NavLink to='/' active className='nav-item'>
+            Yatchs
+          </NavLink>
+        </li>
+        <li className='nav-item'>
+          <NavLink to='/add_reservation'>ADD Reservation</NavLink>
+        </li>
+        <li className='nav-item'>
+          <NavLink to='/reservation'>My Reservation</NavLink>
+        </li>
+        <li className='nav-item'>
+          <NavLink to='/add_yatch'>ADD Yatch</NavLink>
+        </li>
+        <li className='nav-item'>
+          <NavLink to='/delete_yatch'>DELETE Yatch</NavLink>
+        </li>
+        {isAuthenticated ? (
           <li>
-            <Link to='/'>Home</Link>
+            <button type='button' onClick={() => dispatch(logout())}>
+              Logout
+            </button>
           </li>
-          <li>
-            <Link to='login'>Login</Link>
-          </li>
-          <li>
-            <Link to='register'>Register</Link>
-          </li>
-          <li>
-            {isAuthenticated ? (
-              <>
-                <b>{user.name} </b>
-                <button
-                  type='button'
-                  className='text-red-400'
-                  onClick={() => dispatch(logout())}
-                >
-                  Logout
-                </button>
-              </>
-            ) : null}
-          </li>
-        </ul>
-      </nav>
-    </header>
+        ) : null}
+      </ul>
+    </nav>
   );
 }
 
