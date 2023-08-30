@@ -1,22 +1,66 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-
-import Display from './components/Display';
 import Navbar from './components/NavBar';
-
+import Protected from './components/ProtectedRoute';
+import Home from './pages/Index';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
     <div className='App'>
       <Navbar />
-      <div className='bar'>
+      <div>
         <Routes>
-          <Route exact path='/' element={<Display />} />
-          <Route exact path='/add_reservation' element={<Display />} />
-          <Route exact path='/reservation' element={<Display />} />
-          <Route exact path='/add_yatch' element={<Display />} />
-          <Route exact path='/delete_yatch' element={<Display />} />
-
+          <Route
+            exact
+            path='/'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route path='login' element={<Login />} />
+          <Route path='register' element={<Register />} />
+          <Route
+            path='/add_reservation'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/reservation'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/add_yatch'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/delete_yatch'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='*'
+            element={
+              <h2 className='text-red-500 font-semibold'>Page not found!</h2>
+            }
+          />
         </Routes>
       </div>
     </div>
