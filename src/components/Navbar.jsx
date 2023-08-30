@@ -17,16 +17,16 @@ function Navbar() {
           </NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/add_reservation'>ADD Reservation</NavLink>
+          <NavLink to='/add_reservation'>Add Reservation</NavLink>
         </li>
         <li className='nav-item'>
           <NavLink to='/reservation'>My Reservation</NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/add_yatch'>ADD Yatch</NavLink>
+          <NavLink to='/add_yatch'>Add Yatch</NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/delete_yatch'>DELETE Yatch</NavLink>
+          <NavLink to='/delete_yatch'>Delete Yatch</NavLink>
         </li>
         {isAuthenticated ? (
           <li>
