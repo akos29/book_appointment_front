@@ -6,9 +6,18 @@ function App() {
   return (
     <div className='App'>
       < Navbar />
-      <Routes>
-        <Route exact path='/' element={<Display />} />
-      </Routes>
+      <div className="bar">
+        <Routes>
+          <Route exact path='/' element={<Display />} />
+          <Route exact path='/add_reservation' element={<Display />} />
+          <Route exact path='/reservation' element={<Display />} />
+          <Route exact path='/add_yatch' element={<Display />} />
+          <Route exact path='/delete_yatch' element={<Display />} />
+
+        </Routes>
+
+      </div>
+      
     </div>
   );
 }
