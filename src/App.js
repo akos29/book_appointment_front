@@ -1,10 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-
 import Display from './components/Display';
 import Navbar from './components/NavBar';
-
-
 function App() {
   return (
     <div className='App'>
@@ -16,7 +13,6 @@ function App() {
           <Route exact path='/reservation' element={<Display />} />
           <Route exact path='/add_yatch' element={<Display />} />
           <Route exact path='/delete_yatch' element={<Display />} />
-
         </Routes>
       </div>
     </div>
