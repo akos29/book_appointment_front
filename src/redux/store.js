@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
-import yatchReducer from './yatch/yatchSlice';
+import yachtReducer from './yacht/yachtSlice';
+import authReducer from './auth/authSlice';
 
 const store = configureStore({
   reducer: {
-    yatchs: yatchReducer,
+    yachts: yachtReducer,
+    auth: authReducer,
   },
 });
 
