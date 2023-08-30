@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import Navbar from './components/Nav';
+import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Navbar from './components/Navbar';
-import Protected from './components/ProtectedRoute';
 
 function App() {
   return (
@@ -21,9 +21,40 @@ function App() {
               </Protected>
             }
           />
-          <Route path='/home' element={<Home />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
+          <Route
+            path='/add_reservation'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/reservation'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/add_yatch'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path='/delete_yatch'
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
           <Route
             path='*'
             element={

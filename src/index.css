@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   font-family:
     -apple-system,
@@ -24,8 +24,64 @@ code {
     Consolas,
     'Courier New',
     monospace;
-}
+} */
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h2 {
+  font-family: cursive;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(48, 46, 46);
+  rotate: -15deg;
+  padding-left: 10px;
+  margin-top: 90px;
+  margin-bottom: -80px;
+  font-weight: bolder;
+}
+
+body {
+  background-color: #d9dbe0;
+}
+
+.nav-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  width: 250px;
+  background-color: #fff;
+}
+
+.nav-item {
+  color: rgb(48, 46, 46);
+}
+
+.nav-item:hover {
+  background-color: #97bf0f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-cont ul {
+  list-style: none;
+  margin: 0;
+  gap: 6px;
+  width: 250px;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  margin-top: 230px;
+  font-size: 18px;
+  font-weight: 900;
+  justify-content: center;
+}
+
+.nav-cont li {
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
