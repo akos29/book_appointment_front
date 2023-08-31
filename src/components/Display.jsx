@@ -41,7 +41,7 @@ function Display() {
         </h1>
         <div className='flex flex-col gap-4 items-center justify-center'>
           <div className='grid place-content-center gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-col-4'>
-            {yachts.map((yacht) => (
+            {yachts?.map((yacht) => (
               <div
                 key={yacht.id}
                 className='shadow-md cursor-pointer rounded-sm overflow-hidden flex flex-col gap-2 bg-white pb-4'
