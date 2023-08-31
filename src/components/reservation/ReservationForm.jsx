@@ -1,25 +1,64 @@
 import React, { useState } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
-// import { makeReservation } from '../../redux/reservation/reservationSlice';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 function ReservationForm() {
-  // const dispatch = useDispatch();
-  // const { username, selectedItem } = useSelector((state) => state.user); // Get user data from redux store
-
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
+  const yachtId = 3; // Get the yacht ID from the URL
 
-  const handleSubmit = (e) => {
+
+  const navigate = useNavigate();
+
+  const userId = useSelector((state) => state.auth.user.id);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // const reservation = { username, item: selectedItem, date, city };
-    // dispatch(makeReservation(reservation));
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
+        {
+          date,
+          city,
+          user_id: userId,
+          yacht_id: yachtId,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json', // Send data as JSON
+          },
+        },
+      );
+
+      if (response.status === 201) {
+        const { data } = response;
+        if (data.success) {
+          // Show success message and redirect after a short delay
+          toast.success(data.message);
+          setTimeout(() => {
+            navigate('/reservations'); // Redirect to reservations page
+          }, 1500);
+        } else {
+          // Handle error, show error message to the user
+          toast.error(data.message);
+        }
+      } else {
+        // Handle non-OK response status
+        throw new Error(response.statusText);
+      }
+    } catch (error) {
+      // Handle fetch error
+      console.error(error);
+      toast.error('An error occurred. Please try again later.');
+    }
   };
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <input type='text' value='username' readOnly />
-        <input type='text' value='selectedItem' readOnly />
+        {/* Your form inputs */}
         <input
           type='date'
           value={date}
