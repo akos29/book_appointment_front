@@ -20,7 +20,7 @@ function Navbar() {
           <NavLink to='/add_reservation'>Add Reservation</NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/reservation'>My Reservation</NavLink>
+          <NavLink to='/reservations'>My Reservation</NavLink>
         </li>
         <li className='nav-item'>
           <NavLink to='/add_yatch'>Add Yatch</NavLink>

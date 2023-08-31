@@ -14,6 +14,9 @@ export const fetchReservations = createAsyncThunk(
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_ENDPOINT}/yachts/${userId}/reservations`,
+        {
+          params: { user_id: userId },
+        },
       );
       return response.data;
     } catch (error) {

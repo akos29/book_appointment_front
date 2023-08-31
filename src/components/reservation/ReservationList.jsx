@@ -13,7 +13,7 @@ function ReservationsList() {
 
   useEffect(() => {
     if (!loaded) dispatch(fetchReservations({ usserId: user.id }));
-  }, [dispatch, loaded]);
+  }, [dispatch, loaded, user.id]);
 
   return (
     <div className='p-4'>
