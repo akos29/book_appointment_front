@@ -5,6 +5,7 @@ import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AddYacht from './components/AddYacht';
 
 function App() {
   return (
@@ -39,14 +40,7 @@ function App() {
               </Protected>
             }
           />
-          <Route
-            path='/add_yatch'
-            element={
-              <Protected>
-                <Home />
-              </Protected>
-            }
-          />
+          <Route path='/add_yatch' element={<AddYacht />} />
           <Route
             path='/delete_yatch'
             element={
