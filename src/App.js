@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Display from './components/Display';
-import Navbar from './components/Navbar';
 import ReservationsList from './components/reservation/ReservationList';
 import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Nav from './components/Nav';
 
 function App() {
   return (
