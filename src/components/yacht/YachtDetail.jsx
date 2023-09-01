@@ -20,14 +20,37 @@ function YachtDetail({ yachtId, handleView }) {
   return showReservationForm ? (
     <ReservationForm yachtId={yachtId} yachtName={yacht.model} />
   ) : (
-    <div className='p-4'>
-      <h2 className='text-2xl font-semibold mb-4'>Yacht Details</h2>
-      <div className='border border-gray-300 rounded p-4'>
+    <div className='flex col'>
+      <div className='grow aspect-w-10 aspect-h-9 lg:aspect-none'>
         <img
           src={yacht?.photo}
           alt='Yacht'
-          className='w-full mb-4 rounded-lg'
+          className='w-full h-full object-center object-cover lg:w-full lg:h-full'
         />
+      </div>
+
+      <div>
+        <h2 className='text-2xl font-semibold mb-4 flex-none w-14 h-14'>
+          Yacht Details
+        </h2>
+        <table className='hover:table-fixed'>
+          <tr>
+            <th className='border-spacing: 1.75rem var(--tw-border-spacing-y)'>
+              Price
+            </th>
+            <td className='border-spacing: 1.75rem var(--tw-border-spacing-y)'>
+              {yacht.price}
+            </td>
+          </tr>
+          <tr>
+            <th>Total Amount Payable</th>
+            <td>{yacht.price - 0.25 * yacht.price}</td>
+          </tr>
+          <tr>
+            <th>Duration</th>
+            <td>1961</td>
+          </tr>
+        </table>
         <h3 className='text-xl font-semibold mb-2'>
           {yacht?.captain_name} - {yacht?.model}
         </h3>
