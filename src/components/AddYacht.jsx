@@ -7,7 +7,7 @@ function AddYacht() {
   const [price, setPrice] = useState(0);
   const [userId, setUserId] = useState(null);
   const [yachtImage, setYachtImage] = useState(null);
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
