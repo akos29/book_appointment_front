@@ -5,37 +5,51 @@ function AddYacht() {
   const [model, setModel] = useState('');
   const [captainName, setCaptainName] = useState('');
   const [price, setPrice] = useState(0);
+  const [userId, setUserId] = useState(null);
   const [yachtImage, setYachtImage] = useState(null);
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const yachtData = new FormData();
-    yachtData.append('yacht[model]', model);
-    yachtData.append('yacht[captain_name]', captainName);
-    yachtData.append('yacht[price]', price);
-    yachtData.append('yacht[yacht_image]', yachtImage);
+    const yacht = {
+      model,
+      captain_name: captainName,
+      price,
+      user_id: userId,
+      yacht_image: yachtImage,
+    };
+    console.log(yacht);
 
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/yachts`, {
+    if (yachtImage) {
+      // Post the yacht to the API
+      fetch(`${process.env.REACT_APP_API_ENDPOINT}/yachts`, {
         method: 'POST',
-        body: yachtData,
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          // Navigate to the yachts page
-          navigate('/');
-        } else {
-          alert(data.message);
-        }
-      } else {
-        throw new Error(response.statusText);
-      }
-    } catch (error) {
-      console.error(error);
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(yacht),
+      })
+        .then((response) => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error(response.statusText);
+        })
+        .then((data) => {
+          if (data.success) {
+            // Navigate to the Display page
+            navigate('/');
+            // window.location.href = '/';
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    } else {
+      alert('Please select an image file');
     }
   };
 
@@ -60,6 +74,12 @@ function AddYacht() {
           placeholder='Price'
           value={price}
           onChange={(e) => setPrice(e.target.value)}
+        />
+        <input
+          type='number'
+          placeholder='User ID'
+          value={userId}
+          onChange={(e) => setUserId(e.target.value)}
         />
         <input
           type='file'
