@@ -12,7 +12,7 @@ function ReservationsList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!loaded) dispatch(fetchReservations({ usserId: user.id }));
+    if (!loaded) dispatch(fetchReservations({ userId: user.id }));
   }, [dispatch, loaded, user.id]);
 
   return (

@@ -19,8 +19,6 @@ function App() {
         <Routes>
           <Route exact path='/' element={<Display />} />
           <Route exact path='/login' element={<Login />} />
-          <Route exact path='/reservations' element={<ReservationsList />} />
-          <Route exact path='/add_reservation' element={<ReservationForm />} />
           <Route
             exact
             path='/'
@@ -33,10 +31,10 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route
-            path='/add_reservation'
+            path='/add_reservations'
             element={
               <Protected>
-                <Home />
+                <ReservationForm />
               </Protected>
             }
           />
@@ -44,7 +42,7 @@ function App() {
             path='/reservations'
             element={
               <Protected>
-                <Home />
+                <ReservationsList />
               </Protected>
             }
           />

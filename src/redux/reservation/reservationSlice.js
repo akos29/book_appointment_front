@@ -10,10 +10,10 @@ const initialState = {
 
 export const fetchReservations = createAsyncThunk(
   'reservations/fetchReservations',
-  async ({ userId = 1 }) => {
+  async ({ yachtId = 1, userId }) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${userId}/reservations`,
+        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
         {
           params: { user_id: userId },
         },

@@ -3,16 +3,16 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
 
-function ReservationForm() {
+function ReservationForm({ yachtId, yachtName }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
-  const yachtId = 3; // Get the yacht ID from the URL
-
 
   const navigate = useNavigate();
 
-  const userId = useSelector((state) => state.auth.user.id);
+  const user = useSelector((state) => state.auth.user);
+  const userId = user.id;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,21 +35,17 @@ function ReservationForm() {
       if (response.status === 201) {
         const { data } = response;
         if (data.success) {
-          // Show success message and redirect after a short delay
           toast.success(data.message);
           setTimeout(() => {
-            navigate('/reservations'); // Redirect to reservations page
+            navigate('/reservations');
           }, 1500);
         } else {
-          // Handle error, show error message to the user
           toast.error(data.message);
         }
       } else {
-        // Handle non-OK response status
         throw new Error(response.statusText);
       }
     } catch (error) {
-      // Handle fetch error
       console.error(error);
       toast.error('An error occurred. Please try again later.');
     }
@@ -58,7 +54,10 @@ function ReservationForm() {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        {/* Your form inputs */}
+        <input type='text' value={user.name} disabled />
+
+        <input type='text' value={yachtName} disabled />
+
         <input
           type='date'
           value={date}
@@ -76,5 +75,15 @@ function ReservationForm() {
     </div>
   );
 }
+
+ReservationForm.defaultProps = {
+  yachtName: '',
+  yachtId: 0,
+};
+
+ReservationForm.propTypes = {
+  yachtName: PropTypes.string,
+  yachtId: PropTypes.string,
+};
 
 export default ReservationForm;
