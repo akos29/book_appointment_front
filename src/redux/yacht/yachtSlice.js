@@ -3,9 +3,13 @@ import axios from 'axios';
 
 const initialState = {
   yachts: [],
+  yacht: [],
   loaded: false,
   loading: false,
   error: null,
+  yachtError: null,
+  yachtLoaded: false,
+  yachtLoading: false,
 };
 
 export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
@@ -15,7 +19,18 @@ export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
     );
     return response.data;
   } catch (error) {
-    return error.response.data;
+    return error.response;
+  }
+});
+
+export const getYacht = createAsyncThunk('yachts/getYacht', async (id) => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_API_ENDPOINT}/yachts/${id}`,
+    );
+    return response.data;
+  } catch (error) {
+    return error.response;
   }
 });
 
@@ -36,6 +51,19 @@ const yachtsSlice = createSlice({
       state.loading = false;
       state.error = payload || 'Something went wrong!';
       state.loaded = true;
+    });
+    builder.addCase(getYacht.pending, (state) => {
+      state.yachtLoading = true;
+    });
+    builder.addCase(getYacht.fulfilled, (state, { payload }) => {
+      state.yachtLoading = false;
+      state.yacht = payload;
+      state.yachtLoaded = true;
+    });
+    builder.addCase(getYacht.rejected, (state, { payload }) => {
+      state.yachtLoading = false;
+      state.yachtError = payload || 'Something went wrong!';
+      state.yachtLoaded = true;
     });
   },
 });
