@@ -18,7 +18,7 @@ function YachtDetail({ yachtId, handleView }) {
   }, [dispatch, yachtId, yacht.id]);
 
   return showReservationForm ? (
-    <ReservationForm yachtId={yachtId} yachtName={yacht.model} />
+    <ReservationForm yId={yachtId} yachtName={yacht.model} />
   ) : (
     <div className='flex flex-row space-y-9 space-x-9'>
       <div className='grow aspect-w-16 aspect-h-9 lg:aspect-none self-end'>
@@ -48,7 +48,7 @@ function YachtDetail({ yachtId, handleView }) {
               </tr>
               <tr>
                 <th>Duration</th>
-                <td>1961</td>
+                <td>{yacht.updated_at}</td>
               </tr>
             </table>
           </div>

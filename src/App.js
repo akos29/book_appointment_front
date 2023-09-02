@@ -8,8 +8,8 @@ import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Nav from './components/Nav';
-import ReservationForm from './components/reservation/ReservationForm';
 import 'react-toastify/dist/ReactToastify.css';
+import Reserve from './components/reservation/Index';
 
 function App() {
   return (
@@ -31,10 +31,10 @@ function App() {
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           <Route
-            path='/add_reservations'
+            path='/add_reservation'
             element={
               <Protected>
-                <ReservationForm />
+                <Reserve />
               </Protected>
             }
           />
