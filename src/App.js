@@ -7,6 +7,7 @@ import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import AddYacht from './components/AddYacht';
 import Nav from './components/Nav';
 import 'react-toastify/dist/ReactToastify.css';
 import Reserve from './components/reservation/Index';
@@ -47,15 +48,15 @@ function App() {
             }
           />
           <Route
-            path='/add_yatch'
+            path='/add_yacht'
             element={
               <Protected>
-                <Home />
+                <AddYacht />
               </Protected>
             }
           />
           <Route
-            path='/delete_yatch'
+            path='/delete_yacht'
             element={
               <Protected>
                 <Home />
