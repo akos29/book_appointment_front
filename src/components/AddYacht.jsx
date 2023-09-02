@@ -34,16 +34,13 @@ function AddYacht() {
 
         if (response.status === 200) {
           const responseData = response.data;
-          console.log(responseData);
           if (responseData.data.id) {
             // toast.success(data.message);
-            console.log('Yacht added successfully');
             setTimeout(() => {
               navigate('/');
             }, 3500);
           } else {
             // Handle the case where the server responds with success:false
-            console.error(responseData.message);
           }
         } else {
           // Handle other response status codes (e.g., 400, 500, etc.)
