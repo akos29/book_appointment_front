@@ -40,7 +40,14 @@ function App() {
               </Protected>
             }
           />
-          <Route path='/add_yatch' element={<AddYacht />} />
+          <Route
+            path='/add_yatch'
+            element={
+              <Protected>
+                <AddYacht />
+              </Protected>
+            }
+          />
           <Route
             path='/delete_yatch'
             element={
