@@ -9,11 +9,11 @@ function Navbar() {
 
   return (
     <nav className='nav-cont'>
-      <h2>Yatch</h2>
+      <h2>Yacht</h2>
       <ul>
         <li className='nav-item'>
           <NavLink to='/' active className='nav-item'>
-            Yatchs
+            Yachts
           </NavLink>
         </li>
         <li className='nav-item'>
@@ -23,10 +23,10 @@ function Navbar() {
           <NavLink to='/reservation'>My Reservation</NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/add_yatch'>Add Yatch</NavLink>
+          <NavLink to='/add_yacht'>Add Yacht</NavLink>
         </li>
         <li className='nav-item'>
-          <NavLink to='/delete_yatch'>Delete Yatch</NavLink>
+          <NavLink to='/delete_yacht'>Delete Yacht</NavLink>
         </li>
         {isAuthenticated ? (
           <li>

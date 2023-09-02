@@ -41,7 +41,7 @@ function App() {
             }
           />
           <Route
-            path='/add_yatch'
+            path='/add_yacht'
             element={
               <Protected>
                 <AddYacht />
@@ -49,7 +49,7 @@ function App() {
             }
           />
           <Route
-            path='/delete_yatch'
+            path='/delete_yacht'
             element={
               <Protected>
                 <Home />
