@@ -1,55 +1,60 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function AddYacht() {
   const [model, setModel] = useState('');
   const [captainName, setCaptainName] = useState('');
   const [price, setPrice] = useState(0);
-  const [userId, setUserId] = useState(null);
-  const [yachtImage, setYachtImage] = useState(null);
+  const [userId, setUserId] = useState(0);
+  const [yachtImage, setYachtImage] = useState(0);
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const yacht = {
-      model,
-      captain_name: captainName,
-      price,
-      user_id: userId,
-      yacht_image: yachtImage,
-    };
-    console.log(yacht);
+    const formData = new FormData();
+    formData.append('yacht[model]', model);
+    formData.append('yacht[captain_name]', captainName);
+    formData.append('yacht[price]', price);
+    formData.append('yacht[user_id]', userId);
+    formData.append('yacht[yacht_image]', yachtImage);
 
     if (yachtImage) {
-      // Post the yacht to the API
-      fetch(`${process.env.REACT_APP_API_ENDPOINT}/yachts`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(yacht),
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw new Error(response.statusText);
-        })
-        .then((data) => {
-          if (data.success) {
-            // Navigate to the Display page
-            navigate('/');
-            // window.location.href = '/';
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_ENDPOINT}/yachts`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data', // Important for FormData
+            },
+          },
+        );
+
+        if (response.status === 200) {
+          const responseData = response.data;
+          console.log(responseData);
+          if (responseData.data.id) {
+            // toast.success(data.message);
+            console.log('Yacht added successfully');
+            setTimeout(() => {
+              navigate('/');
+            }, 3500);
           } else {
-            alert(data.message);
+            // Handle the case where the server responds with success:false
+            console.error(responseData.message);
           }
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        } else {
+          // Handle other response status codes (e.g., 400, 500, etc.)
+          console.error(`Request failed with status ${response.status}`);
+        }
+      } catch (error) {
+        // Handle any other errors (e.g., network error)
+        console.error(error);
+      }
     } else {
-      alert('Please select an image file');
+      console.error('Please upload an image');
     }
   };
 
