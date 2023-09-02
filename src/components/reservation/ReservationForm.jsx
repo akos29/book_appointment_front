@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
+import { fetchReservations } from '../../redux/reservation/reservationSlice';
 
 function ReservationForm({ yachtId, yachtName }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
+
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -38,6 +41,7 @@ function ReservationForm({ yachtId, yachtName }) {
           toast.success(data.message);
           setTimeout(() => {
             navigate('/reservations');
+            dispatch(fetchReservations({ userId }));
           }, 1500);
         } else {
           toast.error(data.message);
@@ -46,7 +50,6 @@ function ReservationForm({ yachtId, yachtName }) {
         throw new Error(response.statusText);
       }
     } catch (error) {
-      console.error(error);
       toast.error('An error occurred. Please try again later.');
     }
   };
@@ -56,18 +59,17 @@ function ReservationForm({ yachtId, yachtName }) {
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <div className='mb-4'>
           <label
-            htmlFor='userName'
             className='block text-gray-700 font-semibold mb-2'
           >
             User Name
+            <input
+              type='text'
+              id='userName'
+              value={user.name}
+              disabled
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
           </label>
-          <input
-            type='text'
-            id='userName'
-            value={user.name}
-            disabled
-            className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-          />
         </div>
 
         <div className='mb-4'>
@@ -76,14 +78,14 @@ function ReservationForm({ yachtId, yachtName }) {
             className='block text-gray-700 font-semibold mb-2'
           >
             Yacht Name
+            <input
+              type='text'
+              id='yachtName'
+              value={yachtName}
+              disabled
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
           </label>
-          <input
-            type='text'
-            id='yachtName'
-            value={yachtName}
-            disabled
-            className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-          />
         </div>
 
         <div className='mb-4'>
@@ -92,15 +94,15 @@ function ReservationForm({ yachtId, yachtName }) {
             className='block text-gray-700 font-semibold mb-2'
           >
             Date
+            <input
+              type='date'
+              id='date'
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />{' '}
           </label>
-          <input
-            type='date'
-            id='date'
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-            className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-          />
         </div>
 
         <div className='mb-4'>
@@ -109,15 +111,15 @@ function ReservationForm({ yachtId, yachtName }) {
             className='block text-gray-700 font-semibold mb-2'
           >
             City
+            <input
+              type='text'
+              id='city'
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />{' '}
           </label>
-          <input
-            type='text'
-            id='city'
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-            className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-          />
         </div>
 
         <button
