@@ -1,18 +1,23 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './components/Nav';
+import Display from './components/Display';
+import ReservationsList from './components/reservation/ReservationList';
 import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import AddYacht from './components/AddYacht';
+import Nav from './components/Nav';
 
 function App() {
   return (
     <div className='App'>
-      <Navbar />
-      <div>
+      <Nav />
+      <div className='details'>
         <Routes>
+          <Route exact path='/' element={<Display />} />
+          <Route exact path='/login' element={<Display />} />
+          <Route exact path='/reservations' element={<ReservationsList />} />
           <Route
             exact
             path='/'
