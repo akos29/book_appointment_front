@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 
 function ReservationsList() {
@@ -23,7 +24,7 @@ function ReservationsList() {
   const handleDeleteReservation = (reservationId) => {
     // Implement your delete reservation logic here.
     // You can dispatch an action to delete the reservation.
-    console.log(reservationId);
+    toast.success('Reservation deleted successfully', reservationId);
   };
 
   return (

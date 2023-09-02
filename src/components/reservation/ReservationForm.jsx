@@ -69,7 +69,10 @@ function ReservationForm({ yId = '', yachtName = null }) {
     <div className='p-4'>
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <div className='mb-4'>
-          <label className='block text-gray-700 font-semibold mb-2'>
+          <label
+            htmlFor='userName'
+            className='block text-gray-700 font-semibold mb-2'
+          >
             User Name
             <input
               type='text'
