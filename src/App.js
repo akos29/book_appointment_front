@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ToastContainer } from 'react-toastify';
 import Display from './components/Display';
 import ReservationsList from './components/reservation/ReservationList';
 import Protected from './components/ProtectedRoute';
@@ -8,6 +9,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AddYacht from './components/AddYacht';
 import Nav from './components/Nav';
+import 'react-toastify/dist/ReactToastify.css';
+import Reserve from './components/reservation/Index';
 
 function App() {
   return (
@@ -16,8 +19,7 @@ function App() {
       <div className='details'>
         <Routes>
           <Route exact path='/' element={<Display />} />
-          <Route exact path='/login' element={<Display />} />
-          <Route exact path='/reservations' element={<ReservationsList />} />
+          <Route exact path='/login' element={<Login />} />
           <Route
             exact
             path='/'
@@ -33,15 +35,15 @@ function App() {
             path='/add_reservation'
             element={
               <Protected>
-                <Home />
+                <Reserve />
               </Protected>
             }
           />
           <Route
-            path='/reservation'
+            path='/reservations'
             element={
               <Protected>
-                <Home />
+                <ReservationsList />
               </Protected>
             }
           />
@@ -68,6 +70,7 @@ function App() {
             }
           />
         </Routes>
+        <ToastContainer />
       </div>
     </div>
   );

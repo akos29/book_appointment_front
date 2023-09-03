@@ -36,7 +36,7 @@ function Display() {
   } else {
     content = (
       <>
-        <h1 className='text-4xl text-blue-600 font-bold pt-6 py-20'>
+        <h1 className='text-4xl text-green-600 font-bold pt-6 py-20'>
           Display yachts!
         </h1>
         <div className='flex flex-col gap-4 items-center justify-center'>
@@ -47,7 +47,7 @@ function Display() {
                 className='shadow-md cursor-pointer rounded-sm overflow-hidden flex flex-col gap-2 bg-white pb-4'
               >
                 <img src={yacht.photo} alt='yacht' />
-                <h4 className='text-xl my-2 capitalize font-semibold text-blue-600'>
+                <h4 className='text-xl my-2 capitalize font-semibold text-green-600'>
                   {yacht.model}
                 </h4>
                 <em>Captain: {yacht.captain_name}</em>

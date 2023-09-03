@@ -47,7 +47,7 @@ function Register() {
 
   return (
     <div>
-      <h1 className='text-4xl text-blue-600 font-bold pt-6 py-20'>Register</h1>
+      <h1 className='text-4xl text-green-600 font-bold pt-6 py-20'>Register</h1>
 
       <form
         onSubmit={handleRegister}
@@ -91,7 +91,7 @@ function Register() {
         </button>
         <p>
           <span>Already have an account?</span>
-          <Link to='/login' className='pl-2 text-blue-500 font-semibold'>
+          <Link to='/login' className='pl-2 text-green-500 font-semibold'>
             Login
           </Link>
         </p>

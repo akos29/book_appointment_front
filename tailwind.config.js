@@ -5,5 +5,14 @@ module.exports = {
   theme: {
     extend: {},
   },
+  extend: {
+    spacing: {
+      '5px': '5px',
+      backgroundColor: {
+        'odd-row': '#ababab',
+        'even-row': 'transparent',
+      },
+    },
+  },
   plugins: [],
 };
