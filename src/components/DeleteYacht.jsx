@@ -11,5 +11,11 @@ function DeleteYacht() {
   useEffect(() => {
     if (!loaded) dispatch(fetchYachts());
   }, [dispatch, loaded]);
+
+  return (
+    <div>
+      <h1>Delete Yacht!</h1>
+    </div>
+  );
 }
 export default DeleteYacht;
