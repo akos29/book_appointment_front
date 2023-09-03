@@ -79,6 +79,15 @@ const yachtsSlice = createSlice({
       state.yachtError = payload || 'Something went wrong!';
       state.yachtLoaded = true;
     });
+    builder.addCase(deleteYacht.fulfilled, (state, action) => {
+      state.yachts = state.yachts.filter(
+        (yacht) => yacht.id !== action.payload,
+      );
+    });
+
+    builder.addCase(deleteYacht.rejected, (state, action) => {
+      state.error = action.error.message || 'Delete request failed';
+    });
   },
 });
 
