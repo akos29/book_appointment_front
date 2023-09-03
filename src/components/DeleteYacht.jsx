@@ -7,5 +7,9 @@ function DeleteYacht() {
   const { yachts, loading, error, loaded } = useSelector(
     (store) => store.yachts,
   );
+
+  useEffect(() => {
+    if (!loaded) dispatch(fetchYachts());
+  }, [dispatch, loaded]);
 }
 export default DeleteYacht;
