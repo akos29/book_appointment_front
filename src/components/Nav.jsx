@@ -3,7 +3,6 @@ import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/auth/authSlice';
 import ReservationForm from './reservation/ReservationForm';
-import './Nav.module.css';
 
 function Navbar() {
   const dispatch = useDispatch();
@@ -55,8 +54,8 @@ function Navbar() {
       {isModalOpen && (
         <div className='fixed inset-0 flex items-center justify-center z-50'>
           {/* Blurred background */}
-          <div className='modal-overlay blur z-40 w-9 h-9' />
-          <div className='modal-container z-50'>
+          <div className='modal-overlay blur z-40 w-12 h-12' />
+          <div className='modal-container z-50 w-full max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-green-800 dark:border-gray-700'>
             <button
               className='absolute top-2 right-2 text-gray-500 hover:text-gray-800'
               onClick={closeModal}
