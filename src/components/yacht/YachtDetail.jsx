@@ -35,22 +35,24 @@ function YachtDetail({ yachtId, handleView }) {
             <h2 className='text-2xl font-semibold h-14 subpixel-antialiased'>
               Yacht Details
             </h2>
-            <table className='hover:table-fixed border-spacing-1 transition-colors max-h-4 justify-items-stretch caption-top'>
-              <tr className='border border-slate-600 '>
-                <th className='justify-self-end'>Price</th>
-                <td className='border-spacing: 1.75rem var(--tw-border-spacing-y) justify-self-end'>
-                  {yacht.price}
-                </td>
-              </tr>
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+              <table className="w-full text-sm text-left text-white-500 dark:text-gray-400">
               <tr>
-                <th>Total Amount Payable</th>
-                <td>{yacht.price - 0.25 * yacht.price}</td>
+                <th scope="col" className="px-6 py-3">Price</th>
+                <td className='border-spacing: 1.75rem var(--tw-border-spacing-y) justify-self-end'>
+                    {yacht.price}
+                  </td>
+              </tr>
+              <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">Total Amount Payable</th>
+                <td  class="px-6 py-4">{yacht.price - 0.25 * yacht.price}</td>
               </tr>
               <tr>
                 <th>Duration</th>
                 <td>{yacht.updated_at}</td>
               </tr>
             </table>
+            </div>
           </div>
           <div className='flex space-x-2 justify-end'>
             <button

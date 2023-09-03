@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchYachts, getYacht } from '../redux/yacht/yachtSlice';
 import YachtDetail from './yacht/YachtDetail'; 
+import Loading from './Loading';
 
 function Display() {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ function Display() {
   let content;
 
   if (loading) {
-    content = <h1>Loading ...</h1>;
+    content = <Loading />;
   } else if (view) {
     content = <YachtDetail yachtId={selectedYachtId} handleView={handleView} />;
   } else if (error) {

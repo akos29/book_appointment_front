@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
+import Loading from '../Loading';
 
 function ReservationsList() {
   const { reservations, loading, loaded } = useSelector(
@@ -30,29 +31,33 @@ function ReservationsList() {
   return (
     <div className='p-4'>
       {loading ? (
-        <h1>Loading ...</h1>
+       <Loading />
       ) : (
         <>
           <h2 className='text-2xl font-semibold mb-4'>My Reservations</h2>
-          <table className='w-full border-collapse'>
-            <thead>
-              <tr>
-                <th className='text-left'>Yacht Model</th>
-                <th className='text-left'>Date</th>
-                <th className='text-left'>City</th>
-                <th className='text-left'>Reserved By</th>
-                <th className='text-left'>Actions</th>
-              </tr>
-            </thead>
+          <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-green-400">
+                <thead className="text-xs text-gray-700 uppercase bg-green-50 dark:bg-green-700 dark:text-green-400 w-3 h-3">
+                    <tr>
+                        <th scope="col" className="px-6 py-3">Yacht Model</th>
+                        <th scope="col" className="px-6 py-3">Date</th>
+                        <th scope="col" className="px-6 py-3">City</th>
+                        <th scope="col" className="px-6 py-3">              Price
+                </th>
+                        <th scope="col" className="px-6 py-3">Reserved By</th>
+                        <th scope="col" className="px-6 py-3">Actions</th>
+                    </tr>
+                  </thead>
             <tbody>
               {reservations.map((reservation, index) => (
                 <tr
                   key={reservation.id}
-                  className={index % 2 === 0 ? 'bg-even-row' : 'bg-odd-row'}
+                  className={`bg-white border-b dark:bg-${(index%2 !==0 )?'green-800': 'gray-500'} dark:border-gray-700 hover:bg-green-50 dark:hover:bg-green-600`}
                 >
-                  <td className='py-2'>{reservation.yacht.model}</td>
+                  <td className='py-2 px-3'>{reservation.yacht.model}</td>
                   <td className='py-2'>{formatDate(reservation.date)}</td>
                   <td className='py-2'>{reservation.city}</td>
+                  <td  className="px-6 py-4 font-semibold text-green-500 dark:text-green-500">{reservation.yacht.price}</td>
                   <td className='py-2'>{reservation.user.name}</td>
                   <td className='py-2'>
                     <button
@@ -67,6 +72,7 @@ function ReservationsList() {
               ))}
             </tbody>
           </table>
+          </div>
         </>
       )}
     </div>
