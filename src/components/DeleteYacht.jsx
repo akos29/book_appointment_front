@@ -15,6 +15,27 @@ function DeleteYacht() {
   return (
     <div>
       <h1>Delete Yacht!</h1>
+      {loading ? (
+        <h1>Loading ...</h1>
+      ) : (
+        <div>
+          {error ? (
+            <b>{String(error)}</b>
+          ) : (
+            <div>
+              {yachts.map((yatch) => (
+                <div>
+                  <img src={yatch.photo} alt='yacht' />
+                  <h4>{yatch.model}</h4>
+                  <em>Captain: {yatch.captain_name}</em>
+                  <b>Price: ${`${yatch.price}`}</b>
+                  <button type='button'>Delete</button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 }
