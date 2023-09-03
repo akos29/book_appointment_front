@@ -39,6 +39,7 @@ function DeleteYacht() {
                   <button
                     type='button'
                     className='bg-gray-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded max-w-[50%] mx-auto items-center justify-center'
+                    onClick={() => handleDelete(yatch.id)}
                   >
                     Delete
                   </button>
