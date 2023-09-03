@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 function AddYacht() {
+  const user = useSelector((state) => state.auth.user);
+
   const [model, setModel] = useState('');
   const [captainName, setCaptainName] = useState('');
   const [price, setPrice] = useState(0);
-  const [userId, setUserId] = useState(0);
+  const [userId] = useState(user.id);
   const [yachtImage, setYachtImage] = useState(0);
   const navigate = useNavigate();
 
@@ -35,61 +39,115 @@ function AddYacht() {
         if (response.status === 200) {
           const responseData = response.data;
           if (responseData.data.id) {
-            // toast.success(data.message);
+            toast.success('Successfully added yacht');
             setTimeout(() => {
               navigate('/');
             }, 3500);
           } else {
             // Handle the case where the server responds with success:false
+            toast.error(responseData.message);
           }
         } else {
           // Handle other response status codes (e.g., 400, 500, etc.)
-          console.error(`Request failed with status ${response.status}`);
+          toast.error(`Request failed with status ${response.status}`);
         }
       } catch (error) {
         // Handle any other errors (e.g., network error)
-        console.error(error);
+        toast.error(error);
       }
     } else {
-      console.error('Please upload an image');
+      toast.error('Please upload an image');
     }
   };
 
   return (
-    <div>
-      <h1>Add Yacht</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type='text'
-          placeholder='Model'
-          value={model}
-          onChange={(e) => setModel(e.target.value)}
-        />
-        <input
-          type='text'
-          placeholder='Captain name'
-          value={captainName}
-          onChange={(e) => setCaptainName(e.target.value)}
-        />
-        <input
-          type='number'
-          placeholder='Price'
-          value={price}
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <input
-          type='number'
-          placeholder='User ID'
-          value={userId}
-          onChange={(e) => setUserId(e.target.value)}
-        />
-        <input
-          type='file'
-          name='yacht_image'
-          accept='image/*'
-          onChange={(e) => setYachtImage(e.target.files[0])}
-        />
-        <button type='submit'>Add Yacht</button>
+    <div className='p-4'>
+      <h1 className='text-4xl text-green-600 font-bold pt-6 py-20'>
+        Add Yacht
+      </h1>
+      <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
+        <div className='mb-4'>
+          <label
+            htmlFor='model'
+            className='block text-gray-700 font-semibold mb-2'
+          >
+            Model
+            <input
+              type='text'
+              placeholder='Model'
+              value={model}
+              onChange={(e) => setModel(e.target.value)}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
+          </label>
+        </div>
+        <div className='mb-4'>
+          <label
+            htmlFor='captainName'
+            className='block text-gray-700 font-semibold mb-2'
+          >
+            Captain Name
+            <input
+              type='text'
+              placeholder='Captain name'
+              value={captainName}
+              onChange={(e) => setCaptainName(e.target.value)}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
+          </label>
+        </div>
+        <div className='mb-4'>
+          <label
+            htmlFor='price'
+            className='block text-gray-700 font-semibold mb-2'
+          >
+            Price
+            <input
+              type='number'
+              placeholder='Price'
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
+          </label>
+        </div>
+        <div className='mb-4'>
+          <label
+            htmlFor='userName'
+            className='block text-gray-700 font-semibold mb-2'
+          >
+            User Name
+            <input
+              type='text'
+              id='userName'
+              value={user.name}
+              disabled
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
+          </label>
+        </div>
+        <div className='mb-4'>
+          <label
+            htmlFor='yachtImage'
+            className='block text-gray-700 font-semibold mb-2'
+          >
+            Yacht Image
+            <input
+              type='file'
+              name='yacht_image'
+              accept='image/*'
+              onChange={(e) => setYachtImage(e.target.files[0])}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />
+          </label>
+        </div>
+
+        <button
+          type='submit'
+          className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300'
+        >
+          Add Yacht
+        </button>
       </form>
     </div>
   );

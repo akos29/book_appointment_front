@@ -1,4 +1,4 @@
-/* body {
+body {
   margin: 0;
   font-family:
     -apple-system,
@@ -14,6 +14,8 @@
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #d9dbe0;
+  width: 100%;
 }
 
 code {
@@ -24,26 +26,15 @@ code {
     Consolas,
     'Courier New',
     monospace;
-} */
+}
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-h2 {
-  font-family: cursive;
-  font-size: 40px;
-  text-decoration: underline;
-  color: rgb(48, 46, 46);
-  rotate: -15deg;
-  padding-left: 10px;
-  margin-top: 90px;
-  margin-bottom: -80px;
-  font-weight: bolder;
-}
-
-body {
-  background-color: #d9dbe0;
+.details {
+  width: 100%;
+  padding: 1rem;
 }
 
 .nav-cont {
@@ -54,6 +45,18 @@ body {
   height: 100vh;
   width: 250px;
   background-color: #fff;
+}
+
+.nav-cont h2 {
+  font-family: cursive;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(48, 46, 46);
+  rotate: -15deg;
+  padding-left: 10px;
+  margin-top: 90px;
+  margin-bottom: -80px;
+  font-weight: bolder;
 }
 
 .nav-item {

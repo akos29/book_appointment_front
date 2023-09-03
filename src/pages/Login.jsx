@@ -49,7 +49,7 @@ function Login() {
 
   return (
     <div>
-      <h1 className='text-4xl text-blue-600 font-bold pt-6 py-20'>Login</h1>
+      <h1 className='text-4xl text-green-600 font-bold pt-6 py-20'>Login</h1>
 
       <form
         onSubmit={handleLogin}
@@ -86,7 +86,7 @@ function Login() {
         </button>
         <p>
           <span>Don&apos;t have an account</span>
-          <Link to='/register' className='pl-2 text-blue-500 font-semibold'>
+          <Link to='/register' className='pl-2 text-green-500 font-semibold'>
             Create an account
           </Link>
         </p>
