@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function DeleteConfirmation({ isOpen, onCancel, onConfirm }) {
   if (!isOpen) return null;
@@ -27,5 +28,11 @@ function DeleteConfirmation({ isOpen, onCancel, onConfirm }) {
     </div>
   );
 }
+
+DeleteConfirmation.propTypes = {
+  isOpen: PropTypes.boolean,
+  onCancel: PropTypes.function,
+  onConfirm: PropTypes.function,
+};
 
 export default DeleteConfirmation;

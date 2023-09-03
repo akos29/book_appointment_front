@@ -27,7 +27,7 @@ export const fetchReservations = createAsyncThunk(
 
 export const deleteReservation = createAsyncThunk(
   'reservations/deleteReservation',
-  async ({userId, yachtId}) => {
+  async ({ userId, yachtId }) => {
     try {
       const response = await axios.delete(
         `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations/${userId}`,
