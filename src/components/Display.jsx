@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchYachts, getYacht } from '../redux/yacht/yachtSlice';
-import YachtDetail from './yacht/YachtDetail';
+import YachtDetail from './yacht/YachtDetail'; 
 
 function Display() {
   const dispatch = useDispatch();
