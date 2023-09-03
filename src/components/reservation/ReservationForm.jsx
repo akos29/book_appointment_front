@@ -73,6 +73,7 @@ function ReservationForm({ yId = '', yachtName = null }) {
             htmlFor='userName'
             className='block text-gray-700 font-semibold mb-2'
           >
+            {' '}
             User Name
             <input
               type='text'
