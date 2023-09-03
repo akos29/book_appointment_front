@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AddYacht from './components/AddYacht';
 import Nav from './components/Nav';
+import DeleteYacht from './components/DeleteYacht';
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
             path='/delete_yacht'
             element={
               <Protected>
-                <Home />
+                <DeleteYacht />
               </Protected>
             }
           />
