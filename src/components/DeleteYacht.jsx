@@ -12,6 +12,10 @@ function DeleteYacht() {
     if (!loaded) dispatch(fetchYachts());
   }, [dispatch, loaded]);
 
+  const handleDelete = (yachtId) => {
+    dispatch(deleteYacht(yachtId));
+  };
+
   return (
     <div>
       <h1 className='text-4xl text-red-600 font-bold pt-6 py-20'>
