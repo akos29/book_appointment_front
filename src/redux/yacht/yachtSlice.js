@@ -34,6 +34,20 @@ export const getYacht = createAsyncThunk('yachts/getYacht', async (id) => {
   }
 });
 
+export const deleteYacht = createAsyncThunk(
+  'yachts/deleteYacht',
+  async (yachtId, thunkAPI) => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}`,
+      );
+      return yachtId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
 const yachtsSlice = createSlice({
   name: 'yachts',
   initialState,
