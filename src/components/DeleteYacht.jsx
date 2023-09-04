@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { fetchYachts, deleteYacht } from '../redux/yacht/yachtSlice';
-import DeleteConfirmation from '../DeleteConfirmation';
+import DeleteConfirmation from './DeleteConfirmation';
 
 function DeleteYacht() {
   const dispatch = useDispatch();
@@ -22,11 +22,46 @@ function DeleteYacht() {
   };
 
   useEffect(() => {
-    if (!loaded) dispatch(fetchYachts());
+    // eslint-disable-next-line no-undef
+    if (!loaded) dispatch(fetchYachts({ userId: user.id }));
   }, [dispatch, loaded]);
 
   const handleDelete = (yachtId) => {
-    dispatch(deleteYacht(yachtId));
+    try {
+      // Show the confirmation dialog
+      setUserId(yachtId);
+      // eslint-disable-next-line no-undef
+      setYachtId(yid);
+      showConfirmation();
+    } catch (error) {
+      toast.error('Error deleting yacht:', error);
+    }
+    // dispatch(deleteYacht(yachtId));
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      // Dispatch the deleteReservation action
+      const response = await dispatch(deleteYacht({ userId, yachtId }));
+
+      if (response.payload && response.payload.success) {
+        // Reservation deletion was successful
+        toast.success('Your reservation is cancelled successfully');
+      } else {
+        // Reservation deletion failed
+        toast.error('Something went wrong! Please try again later.');
+      }
+    } catch (error) {
+      // An error occurred while deleting the reservation
+      toast.error('Something went wrong!');
+    }
+
+    // Close the confirmation dialog
+    closeConfirmation();
+
+    // Refresh the reservation list
+    // eslint-disable-next-line no-undef
+    dispatch(fetchYachts({ userId: user.id }));
   };
 
   return (
@@ -58,7 +93,7 @@ function DeleteYacht() {
                     className='bg-gray-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded max-w-[50%] mx-auto items-center justify-center'
                     onClick={() => handleDelete(yatch.id)}
                   >
-                    Delete
+                    Cancel Delete
                   </button>
                 </div>
               ))}
@@ -66,6 +101,12 @@ function DeleteYacht() {
           )}
         </div>
       )}
+
+      <DeleteConfirmation
+        isOpen={isConfirmationOpen}
+        onCancel={closeConfirmation}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }
