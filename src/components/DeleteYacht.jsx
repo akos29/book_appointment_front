@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { fetchYachts, deleteYacht } from '../redux/yacht/yachtSlice';
 import DeleteConfirmation from '../DeleteConfirmation';
 
@@ -11,6 +12,14 @@ function DeleteYacht() {
   const [isConfirmationOpen, setConfirmationOpen] = useState(false);
   const [userId, setUserId] = useState(null);
   const [yachtId, setYachtId] = useState(null);
+
+  const showConfirmation = () => {
+    setConfirmationOpen(true);
+  };
+
+  const closeConfirmation = () => {
+    setConfirmationOpen(false);
+  };
 
   useEffect(() => {
     if (!loaded) dispatch(fetchYachts());
