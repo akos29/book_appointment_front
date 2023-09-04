@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { fetchYachts, deleteYacht } from '../redux/yacht/yachtSlice';
-import DeleteConfirmation from './DeleteConfirmation';
+import DeleteYachtConfirmation from './DeleteYachtConfirmation';
 
 function DeleteYacht() {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ function DeleteYacht() {
     (store) => store.yachts,
   );
   const [isConfirmationOpen, setConfirmationOpen] = useState(false);
-  const [userId, setUserId] = useState(null);
   const [yachtId, setYachtId] = useState(null);
 
   const showConfirmation = () => {
@@ -21,46 +20,48 @@ function DeleteYacht() {
     setConfirmationOpen(false);
   };
 
+  const user = useSelector((store) => store.auth.user);
+
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    if (!loaded) dispatch(fetchYachts({ userId: user.id }));
-  }, [dispatch, loaded]);
+    if (!loaded) {
+      // Use user.id from Redux state
+      dispatch(fetchYachts({ userId: user.id }));
+    }
+  }, [dispatch, loaded, user.id]);
 
   const handleDelete = (yachtId) => {
     try {
       // Show the confirmation dialog
-      setUserId(yachtId);
-      // eslint-disable-next-line no-undef
-      setYachtId(yid);
+      setYachtId(yachtId);
       showConfirmation();
     } catch (error) {
       toast.error('Error deleting yacht:', error);
     }
-    // dispatch(deleteYacht(yachtId));
   };
 
   const handleConfirmDelete = async () => {
     try {
-      // Dispatch the deleteReservation action
-      const response = await dispatch(deleteYacht({ userId, yachtId }));
+      // Dispatch the deleteYacht action
+      const response = await dispatch(
+        deleteYacht({ userId: user.id, yachtId }),
+      );
 
       if (response.payload && response.payload.success) {
-        // Reservation deletion was successful
-        toast.success('Your reservation is cancelled successfully');
+        // Yacht deletion was successful
+        toast.success('Yacht deleted successfully');
       } else {
-        // Reservation deletion failed
+        // Yacht deletion failed
         toast.error('Something went wrong! Please try again later.');
       }
     } catch (error) {
-      // An error occurred while deleting the reservation
+      // An error occurred while deleting the yacht
       toast.error('Something went wrong!');
     }
 
     // Close the confirmation dialog
     closeConfirmation();
 
-    // Refresh the reservation list
-    // eslint-disable-next-line no-undef
+    // Refresh the yacht list
     dispatch(fetchYachts({ userId: user.id }));
   };
 
@@ -93,7 +94,7 @@ function DeleteYacht() {
                     className='bg-gray-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded max-w-[50%] mx-auto items-center justify-center'
                     onClick={() => handleDelete(yatch.id)}
                   >
-                    Cancel Delete
+                    Delete
                   </button>
                 </div>
               ))}
@@ -102,7 +103,7 @@ function DeleteYacht() {
         </div>
       )}
 
-      <DeleteConfirmation
+      <DeleteYachtConfirmation
         isOpen={isConfirmationOpen}
         onCancel={closeConfirmation}
         onConfirm={handleConfirmDelete}
