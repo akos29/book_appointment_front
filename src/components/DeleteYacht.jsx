@@ -8,6 +8,9 @@ function DeleteYacht() {
   const { yachts, loading, error, loaded } = useSelector(
     (store) => store.yachts,
   );
+  const [isConfirmationOpen, setConfirmationOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [yachtId, setYachtId] = useState(null);
 
   useEffect(() => {
     if (!loaded) dispatch(fetchYachts());
