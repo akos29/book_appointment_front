@@ -1,12 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { fetchReservations } from '../../redux/reservation/reservationSlice';
+import { fetchReservations, deleteReservation } from '../../redux/reservation/reservationSlice';
+import DeleteConfirmation from '../DeleteConfirmation';
 
 function ReservationsList() {
   const { reservations, loading, loaded } = useSelector(
     (state) => state.reservations,
   );
+  const [isConfirmationOpen, setConfirmationOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [yachtId, setYachtId] = useState(null);
+
+  const showConfirmation = () => {
+    setConfirmationOpen(true);
+  };
+
+  const closeConfirmation = () => {
+    setConfirmationOpen(false);
+  };
 
   const { user } = useSelector((state) => state.auth);
 
