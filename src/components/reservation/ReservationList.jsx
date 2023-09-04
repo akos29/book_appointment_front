@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { fetchReservations, deleteReservation } from '../../redux/reservation/reservationSlice';
+import {
+  fetchReservations,
+  deleteReservation,
+} from '../../redux/reservation/reservationSlice';
 import DeleteConfirmation from '../DeleteConfirmation';
 
 function ReservationsList() {
@@ -33,10 +36,41 @@ function ReservationsList() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handleDeleteReservation = (reservationId) => {
+  const handleDeleteReservation = (reservationId, yid) => {
     // Implement your delete reservation logic here.
     // You can dispatch an action to delete the reservation.
-    toast.success('Reservation deleted successfully', reservationId);
+    try {
+      // Show the confirmation dialog
+      setUserId(reservationId);
+      setYachtId(yid);
+      showConfirmation();
+    } catch (error) {
+      toast.error('Error deleting reservation:', error);
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      // Dispatch the deleteReservation action
+      const response = await dispatch(deleteReservation({ userId, yachtId }));
+
+      if (response.payload && response.payload.success) {
+        // Reservation deletion was successful
+        toast.success('Your reservation is cancelled successfully');
+      } else {
+        // Reservation deletion failed
+        toast.error('Something went wrong! Please try again later.');
+      }
+    } catch (error) {
+      // An error occurred while deleting the reservation
+      toast.error('Something went wrong!');
+    }
+
+    // Close the confirmation dialog
+    closeConfirmation();
+
+    // Refresh the reservation list
+    dispatch(fetchReservations({ userId: user.id }));
   };
 
   return (
@@ -72,7 +106,7 @@ function ReservationsList() {
                       className='bg-red-500 text-white rounded px-4 py-2'
                       onClick={() => handleDeleteReservation(reservation.id)}
                     >
-                      Delete
+                      Cancel Reservation
                     </button>
                   </td>
                 </tr>
@@ -81,6 +115,12 @@ function ReservationsList() {
           </table>
         </>
       )}
+
+      <DeleteConfirmation
+        isOpen={isConfirmationOpen}
+        onCancel={closeConfirmation}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }
