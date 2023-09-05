@@ -16,6 +16,7 @@ export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
   try {
     const response = await axios.get(
       `${process.env.REACT_APP_API_ENDPOINT}/yachts`,
+      { params: { is_deleted: false } },
     );
     return response.data;
   } catch (error) {
