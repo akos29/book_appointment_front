@@ -37,8 +37,6 @@ function ReservationsList() {
   };
 
   const handleDeleteReservation = (reservationId, yid) => {
-    // Implement your delete reservation logic here.
-    // You can dispatch an action to delete the reservation.
     try {
       // Show the confirmation dialog
       setUserId(reservationId);
@@ -79,14 +77,15 @@ function ReservationsList() {
         <h1>Loading ...</h1>
       ) : (
         <>
-          <h2 className='text-2xl font-semibold mb-4'>My Reservations</h2>
+          <h2 className='text-4xl text-green-600 font-bold pt-6 py-20'>
+            My Reservations
+          </h2>
           <table className='w-full border-collapse'>
             <thead>
               <tr>
                 <th className='text-left'>Yacht Model</th>
                 <th className='text-left'>Date</th>
                 <th className='text-left'>City</th>
-                <th className='text-left'>Reserved By</th>
                 <th className='text-left'>Actions</th>
               </tr>
             </thead>
@@ -99,12 +98,16 @@ function ReservationsList() {
                   <td className='py-2'>{reservation.yacht.model}</td>
                   <td className='py-2'>{formatDate(reservation.date)}</td>
                   <td className='py-2'>{reservation.city}</td>
-                  <td className='py-2'>{reservation.user.name}</td>
                   <td className='py-2'>
                     <button
                       type='button'
                       className='bg-red-500 text-white rounded px-4 py-2'
-                      onClick={() => handleDeleteReservation(reservation.id)}
+                      onClick={() =>
+                        handleDeleteReservation(
+                          reservation.id,
+                          reservation.yacht.id,
+                        )
+                      }
                     >
                       Cancel Reservation
                     </button>
