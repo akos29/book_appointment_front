@@ -41,12 +41,9 @@ function DeleteYacht() {
 
   const handleConfirmDelete = async () => {
     try {
-      // Dispatch the deleteYacht action
-      const response = await dispatch(
-        deleteYacht({ userId: user.id, yachtId }),
-      );
-
-      if (response.payload && response.payload.success) {
+      // Dispatch the deleteYacht action to delete the yacht
+      const response = await dispatch(deleteYacht(yachtId));
+      if (deleteYacht.fulfilled.match(response)) {
         // Yacht deletion was successful
         toast.success('Yacht deleted successfully');
       } else {
@@ -57,12 +54,8 @@ function DeleteYacht() {
       // An error occurred while deleting the yacht
       toast.error('Something went wrong!');
     }
-
     // Close the confirmation dialog
     closeConfirmation();
-
-    // Refresh the yacht list
-    dispatch(fetchYachts({ userId: user.id }));
   };
 
   return (
