@@ -2,7 +2,6 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
 import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
 import ReservationsList from './components/reservation/ReservationList';
 import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
@@ -16,16 +15,10 @@ import Reserve from './components/reservation/Index';
 
 function App() {
   const user = useSelector((state) => state.auth);
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   console.log('user', user);
-  // }, [user, dispatch]);
 
   return (
     <div className='App'>
       {user.isAuthenticated && <Nav />}
-      {/* {console.log(user.isAuthenticated)} */}
       <div className='details'>
         <Routes>
           <Route exact path='/login' element={<Login />} />
