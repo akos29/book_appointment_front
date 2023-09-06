@@ -73,13 +73,13 @@ function ReservationsList() {
   };
 
   return (
-    <div className='p-4 z-20'>
+    <div className='p-4'>
       {loading ? (
         <Loading />
       ) : (
         <>
           <h2 className='text-2xl font-semibold mb-4 mt-6'>My Reservations</h2>
-          <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
+          <div className='shadow-md sm:rounded-lg'>
             <table className='w-full text-sm text-left text-gray-500 dark:text-green-400 overflow-x-auto'>
               <thead className='text-xs text-white uppercase bg-green-50 dark:bg-green-700 dark:text-white-400 w-3 h-3'>
                 <tr>

@@ -131,27 +131,23 @@ function Navbar() {
         </ul>
 
         {/* Modal */}
-        {isModalOpen && <AddReservation closeModal={closeModal} />}
+        {isModalOpen && (
+          <div className='fixed top-0 left-0 w-full h-screen flex items-center justify-center z-[9998]'>
+            <div className='z-[9998] fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-60 blur-md' />
+            <div className='z-[9999] modal-container max-w-sm p-4 bg-white sm:p-6 md:p-8 dark:bg-green-600 dark:border-gray-500'>
+              <button
+                type='button'
+                className='absolute top-2 right-2 text-white hover:text-red-600'
+                onClick={closeModal}
+              >
+                Close
+              </button>
+              <ReservationForm handleClose={closeModal} />
+            </div>
+          </div>
+        )}
       </nav>
     </>
-  );
-}
-
-function AddReservation({ closeModal }) {
-  return (
-    <div className='fixed top-0 left-0 w-full h-screen flex items-center justify-center z-[9998]'>
-      <div className='z-[9998] fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-60 blur-md' />
-      <div className='z-[9999] modal-container max-w-sm p-4 bg-white sm:p-6 md:p-8 dark:bg-green-600 dark:border-gray-500'>
-        <button
-          type='button'
-          className='absolute top-2 right-2 text-white hover:text-red-600'
-          onClick={closeModal}
-        >
-          Close
-        </button>
-        <ReservationForm handleClose={closeModal} />
-      </div>
-    </div>
   );
 }
 
