@@ -16,6 +16,7 @@ export const fetchYachts = createAsyncThunk('yachts/fetchYachts', async () => {
   try {
     const response = await axios.get(
       `${process.env.REACT_APP_API_ENDPOINT}/yachts`,
+      { params: { is_deleted: false } },
     );
     return response.data;
   } catch (error) {
@@ -33,6 +34,20 @@ export const getYacht = createAsyncThunk('yachts/getYacht', async (id) => {
     return error.response;
   }
 });
+
+export const deleteYacht = createAsyncThunk(
+  'yachts/deleteYacht',
+  async (yachtId, thunkAPI) => {
+    try {
+      await axios.delete(
+        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}`,
+      );
+      return yachtId;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
 
 const yachtsSlice = createSlice({
   name: 'yachts',
@@ -64,6 +79,15 @@ const yachtsSlice = createSlice({
       state.yachtLoading = false;
       state.yachtError = payload || 'Something went wrong!';
       state.yachtLoaded = true;
+    });
+    builder.addCase(deleteYacht.fulfilled, (state, action) => {
+      state.yachts = state.yachts.filter(
+        (yacht) => yacht.id !== action.payload,
+      );
+    });
+
+    builder.addCase(deleteYacht.rejected, (state, action) => {
+      state.error = action.error.message || 'Delete request failed';
     });
   },
 });

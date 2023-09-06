@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import AddYacht from './components/AddYacht';
 import Nav from './components/Nav';
+import DeleteYacht from './components/DeleteYacht';
 import 'react-toastify/dist/ReactToastify.css';
 import Reserve from './components/reservation/Index';
 
@@ -68,7 +69,7 @@ function App() {
             path='/delete_yacht'
             element={
               <Protected>
-                <Home />
+                <DeleteYacht />
               </Protected>
             }
           />
