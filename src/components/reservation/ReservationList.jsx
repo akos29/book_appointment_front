@@ -73,15 +73,15 @@ function ReservationsList() {
   };
 
   return (
-    <div className='p-4'>
+    <div className='p-4 z-20'>
       {loading ? (
         <Loading />
       ) : (
         <>
           <h2 className='text-2xl font-semibold mb-4 mt-6'>My Reservations</h2>
           <div className='relative overflow-x-auto shadow-md sm:rounded-lg'>
-            <table className='w-full text-sm text-left text-gray-500 dark:text-green-400'>
-              <thead className='text-xs text-gray-700 uppercase bg-green-50 dark:bg-green-700 dark:text-green-400 w-3 h-3'>
+            <table className='w-full text-sm text-left text-gray-500 dark:text-green-400 overflow-x-auto'>
+              <thead className='text-xs text-white uppercase bg-green-50 dark:bg-green-700 dark:text-white-400 w-3 h-3'>
                 <tr>
                   <th scope='col' className='px-6 py-3'>
                     Yacht Model
@@ -104,18 +104,19 @@ function ReservationsList() {
                   </th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className='z-20'>
                 {reservations.map((reservation, index) => (
                   <tr
                     key={reservation.id}
-                    className={`bg-white border-b dark:bg-${
-                      index % 2 !== 0 ? 'green-800' : 'gray-500'
-                    } dark:border-gray-700 hover:bg-green-50 dark:hover:bg-green-600`}
+                    className={`border-b ${
+                      index % 2 === 1 ? 'bg-spare-300' : 'bg-gray-100'
+                    }
+                    text-gray-600 dark:hover:text-gray-700 dark:border-gray-200 hover:bg-green-50 dark:hover:bg-green-400 z-0`}
                   >
                     <td className='py-2 px-3'>{reservation.yacht.model}</td>
                     <td className='py-2'>{formatDate(reservation.date)}</td>
                     <td className='py-2'>{reservation.city}</td>
-                    <td className='px-6 py-4 font-semibold text-green-500 dark:text-green-500'>
+                    <td className='px-6 py-4 font-semibold'>
                       {reservation.yacht.price}
                     </td>
                     <td className='py-2'>{reservation.user.name}</td>
