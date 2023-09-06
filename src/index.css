@@ -35,7 +35,8 @@ code {
 
 .details {
   width: 100%;
-  padding: 1rem;
+  padding: 0.5rem;
+  margin-left: 0;
 }
 
 .nav-cont {
@@ -82,7 +83,6 @@ code {
 
 .nav-cont ul {
   list-style: none;
-  margin: 0;
   gap: 6px;
   width: 250px;
   display: flex;
@@ -103,4 +103,8 @@ code {
 .mobile-navbar {
   @apply flex md:hidden bg-white fixed top-0 left-0 w-full h-auto
     max-h-16 py-4 justify-between items-center px-1 border-b-2 border-gray-300 shadow-sm;
+}
+
+.ml-fix {
+  @apply w-full md:w-[90%] lg:max-w-[540px] mx-auto;
 }
