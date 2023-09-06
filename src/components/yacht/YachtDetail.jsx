@@ -20,7 +20,7 @@ function YachtDetail({ yachtId, handleView }) {
   return showReservationForm ? (
     <ReservationForm yId={yachtId} yachtName={yacht.model} />
   ) : (
-    <div className='flex flex-col mt-16 lg:flex-row space-y-9 space-x-9 justify-between'>
+    <div className='flex flex-col mt-16 lg:flex-row space-y-9 space-x-9 justify-between ml-0'>
       <div className='grow aspect-w-16 aspect-h-9 lg:aspect-none max-w-[90%] md:max-w-[900px] self-center'>
         <img
           src={yacht?.photo}
@@ -29,16 +29,16 @@ function YachtDetail({ yachtId, handleView }) {
         />
       </div>
 
-      <div className='flex flex-row mx-auto lg:pr-6 w-full lg:max-w-max'>
-        <div className='flex flex-col justify-between'>
+      <div className='flex flex-col md:flex-row ml-0'>
+        <div className='flex flex-col justify-between ml-fix'>
           <div className='flex flex-col space-y-2'>
-            <h2 className='text-2xl font-semibold h-14 subpixel-antialiased'>
+            <h2 className='text-2xl font-semibold h-14 text-left'>
               Yacht Details
             </h2>
-            <div className='relative overflow-x-auto shadow-md sm:rounded-lg mx-auto'>
-              <table className='w-full text-sm text-left text-white-500 dark:text-gray-700 mx-auto'>
+            <div className='relative shadow-md sm:rounded-lg ml-fix'>
+              <table className='w-full text-sm text-left text-white-500 dark:text-gray-700 ml-fix'>
                 <tr>
-                  <th scope='col' className='px-6 py-3'>
+                  <th scope='col' className='px-4 py-3'>
                     Price
                   </th>
                   <td className='border-spacing: 1.75rem var(--tw-border-spacing-y) justify-self-end'>
@@ -48,19 +48,19 @@ function YachtDetail({ yachtId, handleView }) {
                 <tr className='bg-white border-b dark:bg-gray-900 dark:border-gray-700'>
                   <th
                     scope='row'
-                    className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                    className='px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                   >
                     Total Amount Payable
                   </th>
-                  <td className='px-6 py-4 text-white'>
+                  <td className='px-4 py-3 text-white'>
                     {yacht.price - 0.25 * yacht.price}
                   </td>
                 </tr>
                 <tr>
-                  <th scope='col' className='px-6 py-3'>
+                  <th scope='col' className='px-4 py-3'>
                     Duration
                   </th>
-                  <td className='pr-2'>{yacht.updated_at}</td>
+                  <td className='pr-1'>{yacht.updated_at}</td>
                 </tr>
               </table>
             </div>
