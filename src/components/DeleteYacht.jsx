@@ -60,7 +60,7 @@ function DeleteYacht() {
 
   return (
     <div>
-      <h1 className='text-4xl text-red-600 font-bold pt-6 py-20'>
+      <h1 className='text-4xl text-red-600 font-bold pt-6 py-20 mt-8'>
         Delete yacht!
       </h1>
       {loading ? (

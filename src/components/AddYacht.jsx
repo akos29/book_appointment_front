@@ -77,7 +77,7 @@ function AddYacht() {
               placeholder='Model'
               value={model}
               onChange={(e) => setModel(e.target.value)}
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
@@ -92,7 +92,7 @@ function AddYacht() {
               placeholder='Captain name'
               value={captainName}
               onChange={(e) => setCaptainName(e.target.value)}
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
@@ -107,7 +107,7 @@ function AddYacht() {
               placeholder='Price'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
@@ -122,7 +122,7 @@ function AddYacht() {
               id='userName'
               value={user.name}
               disabled
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
@@ -137,14 +137,14 @@ function AddYacht() {
               name='yacht_image'
               accept='image/*'
               onChange={(e) => setYachtImage(e.target.files[0])}
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
 
         <button
           type='submit'
-          className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300'
+          className='bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300'
         >
           Add Yacht
         </button>
