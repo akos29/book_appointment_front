@@ -1,11 +1,16 @@
-/* stylelint-disable at-rule-empty-line-before */
-/* stylelint-disable declaration-colon-newline-after */
-/* stylelint-disable value-list-comma-newline-after */
-/* stylelint-disable indentation */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -15,7 +20,12 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
 }
 
@@ -52,6 +62,7 @@ code {
 
 .nav-item {
   color: rgb(48, 46, 46);
+
   @apply block py-5;
 }
 
@@ -91,6 +102,6 @@ code {
 
 .mobile-navbar {
   @apply flex md:hidden bg-white fixed top-0 left-0 w-full h-auto
-  max-h-16 py-4 justify-between items-center px-1 border-b-2
+    max-h-16 py-4 justify-between items-center px-1 border-b-2
   border-gray-300 shadow-sm;
 }
