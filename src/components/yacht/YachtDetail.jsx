@@ -6,7 +6,7 @@ import ReservationForm from '../reservation/ReservationForm';
 
 function YachtDetail({ yachtId, handleView }) {
   const yacht = useSelector((state) => state.yachts.yacht);
-  // const { yachtLoading } = useSelector((state) => state.yachts);
+
   const dispatch = useDispatch();
 
   const [showReservationForm, setShowReservationForm] = useState(false);
@@ -20,8 +20,8 @@ function YachtDetail({ yachtId, handleView }) {
   return showReservationForm ? (
     <ReservationForm yId={yachtId} yachtName={yacht.model} />
   ) : (
-    <div className='flex flex-row space-y-9 space-x-9'>
-      <div className='grow aspect-w-16 aspect-h-9 lg:aspect-none self-end'>
+    <div className='flex flex-col mt-16 lg:flex-row space-y-9 space-x-9 justify-between ml-0'>
+      <div className='grow aspect-w-16 aspect-h-9 lg:aspect-none max-w-[90%] md:max-w-[900px] self-center'>
         <img
           src={yacht?.photo}
           alt={yacht?.model}
@@ -29,33 +29,46 @@ function YachtDetail({ yachtId, handleView }) {
         />
       </div>
 
-      <div className='flex flex-row justify-end'>
-        <div className='flex flex-col justify-between'>
+      <div className='flex flex-col md:flex-row ml-0'>
+        <div className='flex flex-col justify-between ml-fix'>
           <div className='flex flex-col space-y-2'>
-            <h2 className='text-2xl font-semibold h-14 subpixel-antialiased'>
+            <h2 className='text-2xl font-semibold h-14 text-left'>
               Yacht Details
             </h2>
-            <table className='hover:table-fixed border-spacing-1 transition-colors max-h-4 justify-items-stretch caption-top'>
-              <tr className='border border-slate-600 '>
-                <th className='justify-self-end'>Price</th>
-                <td className='border-spacing: 1.75rem var(--tw-border-spacing-y) justify-self-end'>
-                  {yacht.price}
-                </td>
-              </tr>
-              <tr>
-                <th>Total Amount Payable</th>
-                <td>{yacht.price - 0.25 * yacht.price}</td>
-              </tr>
-              <tr>
-                <th>Duration</th>
-                <td>{yacht.updated_at}</td>
-              </tr>
-            </table>
+            <div className='relative shadow-md sm:rounded-lg ml-fix'>
+              <table className='w-full text-sm text-left text-white-500 dark:text-gray-700 ml-fix'>
+                <tr>
+                  <th scope='col' className='px-4 py-3'>
+                    Price
+                  </th>
+                  <td className='border-spacing: 1.75rem var(--tw-border-spacing-y) justify-self-end'>
+                    {yacht.price}
+                  </td>
+                </tr>
+                <tr className='bg-white border-b dark:bg-gray-900 dark:border-gray-700'>
+                  <th
+                    scope='row'
+                    className='px-4 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                  >
+                    Total Amount Payable
+                  </th>
+                  <td className='px-4 py-3 text-white'>
+                    {yacht.price - 0.25 * yacht.price}
+                  </td>
+                </tr>
+                <tr>
+                  <th scope='col' className='px-4 py-3'>
+                    Duration
+                  </th>
+                  <td className='pr-1'>{yacht.updated_at}</td>
+                </tr>
+              </table>
+            </div>
           </div>
-          <div className='flex space-x-2 justify-end'>
+          <div className='flex space-x-2 justify-end mt-6'>
             <button
               type='button'
-              className='bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300'
+              className='bg-green-500 text-white rounded px-4 py-2 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300'
               onClick={() => setShowReservationForm(true)}
             >
               Make Reserve

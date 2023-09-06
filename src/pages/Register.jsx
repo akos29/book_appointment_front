@@ -85,7 +85,7 @@ function Register() {
         />
         <button
           type='submit'
-          className='px-12 py-3 text-white bg-blue-500 rounded-sm max-w-[280px] mx-auto block capitalize mt-6 hover:bg-blue-700'
+          className='px-12 py-3 text-white bg-green-500 rounded-sm max-w-[280px] mx-auto block capitalize mt-6 hover:bg-green-700'
         >
           Sign up
         </button>

@@ -7,10 +7,11 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-function ReservationForm({ yId = '', yachtName = null }) {
+function ReservationForm({ yId = '', yachtName = null, handleClose = null }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
+  const [isSubmitting, setIsSubmitting] = useState(false); // For form submission state
 
   const dispatch = useDispatch();
 
@@ -22,40 +23,50 @@ function ReservationForm({ yId = '', yachtName = null }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (yachtId) {
-      try {
-        const response = await axios.post(
-          `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
-          {
-            date,
-            city,
-            user_id: userId,
-            yacht_id: yachtId,
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json', // Send data as JSON
-            },
-          },
-        );
 
-        if (response.status === 201) {
-          const { data } = response;
-          if (data.success) {
-            toast.success(data.message);
-            setTimeout(() => {
-              navigate('/reservations');
-              dispatch(fetchReservations({ userId }));
-            }, 1500);
-          } else {
-            toast.error(data.message);
-          }
+    if (!date || !city || !yachtId) {
+      toast.error('Please fill in all fields.');
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
+        {
+          date,
+          city,
+          user_id: userId,
+          yacht_id: yachtId,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+
+      if (response.status === 201) {
+        const { data } = response;
+        if (data.success) {
+          toast.success(data.message);
+          setDate('');
+          setCity('');
+          setIsSubmitting(false);
+          handleClose();
+          navigate('/reservations');
+          dispatch(fetchReservations({ userId }));
         } else {
-          throw new Error(response.statusText);
+          toast.error(data.message);
+          setIsSubmitting(false); // Reset submission state on failure
         }
-      } catch (error) {
-        toast.error('An error occurred. Please try again later.');
+      } else {
+        throw new Error(response.statusText);
       }
+    } catch (error) {
+      toast.error('An error occurred. Please try again later.');
+      setIsSubmitting(false); // Reset submission state on error
     }
   };
 
@@ -66,21 +77,20 @@ function ReservationForm({ yId = '', yachtName = null }) {
   }, [yachts, dispatch]);
 
   return (
-    <div className='p-4'>
+    <div>
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <div className='mb-4'>
           <label
             htmlFor='userName'
             className='block text-gray-700 font-semibold mb-2'
           >
-            {' '}
             User Name
             <input
               type='text'
               id='userName'
               value={user.name}
               disabled
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
             />
           </label>
         </div>
@@ -97,7 +107,7 @@ function ReservationForm({ yId = '', yachtName = null }) {
                 id='yachtName'
                 value={yachtName}
                 disabled
-                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
               />
             </label>
           </div>
@@ -113,7 +123,7 @@ function ReservationForm({ yId = '', yachtName = null }) {
                 value={yachtId}
                 onChange={(e) => setYachtId(e.target.value)}
                 required
-                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
               >
                 <option value=''>Select Yacht Name</option>
                 {yachts.map((yacht) => (
@@ -138,8 +148,8 @@ function ReservationForm({ yId = '', yachtName = null }) {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-            />{' '}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
+            />
           </label>
         </div>
 
@@ -155,16 +165,19 @@ function ReservationForm({ yId = '', yachtName = null }) {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
-            />{' '}
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
+            />
           </label>
         </div>
 
         <button
           type='submit'
-          className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300'
+          className={`bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 ${
+            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+          }`}
+          disabled={isSubmitting}
         >
-          Reserve
+          {isSubmitting ? 'Submitting...' : 'Reserve'}
         </button>
       </form>
     </div>
@@ -174,10 +187,12 @@ function ReservationForm({ yId = '', yachtName = null }) {
 ReservationForm.defaultProps = {
   yachtName: '',
   yId: 0,
+  handleClose: null,
 };
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
+  handleClose: PropTypes.func,
   yId: PropTypes.number,
 };
 

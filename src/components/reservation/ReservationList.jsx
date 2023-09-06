@@ -6,6 +6,7 @@ import {
   deleteReservation,
 } from '../../redux/reservation/reservationSlice';
 import DeleteConfirmation from '../DeleteConfirmation';
+import Loading from '../Loading';
 
 function ReservationsList() {
   const { reservations, loading, loaded } = useSelector(
@@ -74,48 +75,70 @@ function ReservationsList() {
   return (
     <div className='p-4'>
       {loading ? (
-        <h1>Loading ...</h1>
+        <Loading />
       ) : (
         <>
-          <h2 className='text-4xl text-green-600 font-bold pt-6 py-20'>
-            My Reservations
-          </h2>
-          <table className='w-full border-collapse'>
-            <thead>
-              <tr>
-                <th className='text-left'>Yacht Model</th>
-                <th className='text-left'>Date</th>
-                <th className='text-left'>City</th>
-                <th className='text-left'>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {reservations.map((reservation, index) => (
-                <tr
-                  key={reservation.id}
-                  className={index % 2 === 0 ? 'bg-even-row' : 'bg-odd-row'}
-                >
-                  <td className='py-2'>{reservation.yacht.model}</td>
-                  <td className='py-2'>{formatDate(reservation.date)}</td>
-                  <td className='py-2'>{reservation.city}</td>
-                  <td className='py-2'>
-                    <button
-                      type='button'
-                      className='bg-red-500 text-white rounded px-4 py-2'
-                      onClick={() =>
-                        handleDeleteReservation(
-                          reservation.id,
-                          reservation.yacht.id,
-                        )
-                      }
-                    >
-                      Cancel Reservation
-                    </button>
-                  </td>
+          <h2 className='text-2xl font-semibold mb-4 mt-6'>My Reservations</h2>
+          <div className='shadow-md sm:rounded-lg'>
+            <table className='w-full text-sm text-left text-gray-500 dark:text-green-400 overflow-x-auto'>
+              <thead className='text-xs text-white uppercase bg-green-50 dark:bg-green-700 dark:text-white-400 w-3 h-3'>
+                <tr>
+                  <th scope='col' className='px-6 py-3'>
+                    Yacht Model
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Date
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    City
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    {' '}
+                    Price
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Reserved By
+                  </th>
+                  <th scope='col' className='px-6 py-3'>
+                    Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className='z-20'>
+                {reservations.map((reservation, index) => (
+                  <tr
+                    key={reservation.id}
+                    className={`border-b ${
+                      index % 2 === 1 ? 'bg-spare-300' : 'bg-gray-100'
+                    }
+                    text-gray-600 dark:hover:text-gray-700 dark:border-gray-200 hover:bg-green-50 dark:hover:bg-green-400 z-0`}
+                  >
+                    <td className='py-2 px-3'>{reservation.yacht.model}</td>
+                    <td className='py-2'>{formatDate(reservation.date)}</td>
+                    <td className='py-2'>{reservation.city}</td>
+                    <td className='px-6 py-4 font-semibold'>
+                      {reservation.yacht.price}
+                    </td>
+                    <td className='py-2'>{reservation.user.name}</td>
+                    <td className='py-2'>
+                      <button
+                        type='button'
+                        className='bg-red-500 text-white rounded px-4 py-2'
+                        onClick={() =>
+                          handleDeleteReservation(
+                            reservation.id,
+                            reservation.yacht.id,
+                          )
+                        }
+                      >
+                        Cancel Reservation
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
 

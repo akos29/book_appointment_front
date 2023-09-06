@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ToastContainer } from 'react-toastify';
-import Display from './components/Display';
+import { useSelector } from 'react-redux';
 import ReservationsList from './components/reservation/ReservationList';
 import Protected from './components/ProtectedRoute';
 import Home from './pages/Index';
@@ -14,12 +14,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import Reserve from './components/reservation/Index';
 
 function App() {
+  const user = useSelector((state) => state.auth);
+
   return (
     <div className='App'>
-      <Nav />
+      {user.isAuthenticated && <Nav />}
       <div className='details'>
         <Routes>
-          <Route exact path='/' element={<Display />} />
           <Route exact path='/login' element={<Login />} />
           <Route
             exact
