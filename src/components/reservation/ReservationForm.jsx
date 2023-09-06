@@ -187,10 +187,12 @@ function ReservationForm({ yId = '', yachtName = null, handleClose = null }) {
 ReservationForm.defaultProps = {
   yachtName: '',
   yId: 0,
+  handleClose: null,
 };
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
+  handleClose: PropTypes.func,
   yId: PropTypes.number,
 };
 

@@ -1,30 +1,21 @@
+/* stylelint-disable at-rule-empty-line-before */
+/* stylelint-disable declaration-colon-newline-after */
+/* stylelint-disable value-list-comma-newline-after */
+/* stylelint-disable indentation */
 body {
   margin: 0;
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #d9dbe0;
+  background-color: #efefef;
   width: 100%;
+  position: relative;
 }
 
 code {
-  font-family:
-    source-code-pro,
-    Menlo,
-    Monaco,
-    Consolas,
-    'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
 
@@ -42,7 +33,7 @@ code {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 100vh;
+  min-height: 100vh;
   width: 250px;
   background-color: #fff;
 }
@@ -61,6 +52,15 @@ code {
 
 .nav-item {
   color: rgb(48, 46, 46);
+  @apply block py-5;
+}
+
+.nav-item.active {
+  @apply font-semibold;
+}
+
+.nav-item > button {
+  @apply p-0 m-0 inline;
 }
 
 .nav-item:hover {
@@ -87,4 +87,10 @@ code {
   height: 50px;
   padding-top: 10px;
   padding-left: 10px;
+}
+
+.mobile-navbar {
+  @apply flex md:hidden bg-white fixed top-0 left-0 w-full h-auto
+  max-h-16 py-4 justify-between items-center px-1 border-b-2
+  border-gray-300 shadow-sm;
 }
