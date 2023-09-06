@@ -6,7 +6,7 @@ import ReservationForm from '../reservation/ReservationForm';
 
 function YachtDetail({ yachtId, handleView }) {
   const yacht = useSelector((state) => state.yachts.yacht);
-  // const { yachtLoading } = useSelector((state) => state.yachts);
+
   const dispatch = useDispatch();
 
   const [showReservationForm, setShowReservationForm] = useState(false);
