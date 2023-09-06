@@ -1,12 +1,27 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { fetchReservations } from '../../redux/reservation/reservationSlice';
+import {
+  fetchReservations,
+  deleteReservation,
+} from '../../redux/reservation/reservationSlice';
+import DeleteConfirmation from '../DeleteConfirmation';
 
 function ReservationsList() {
   const { reservations, loading, loaded } = useSelector(
     (state) => state.reservations,
   );
+  const [isConfirmationOpen, setConfirmationOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [yachtId, setYachtId] = useState(null);
+
+  const showConfirmation = () => {
+    setConfirmationOpen(true);
+  };
+
+  const closeConfirmation = () => {
+    setConfirmationOpen(false);
+  };
 
   const { user } = useSelector((state) => state.auth);
 
@@ -21,10 +36,39 @@ function ReservationsList() {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  const handleDeleteReservation = (reservationId) => {
-    // Implement your delete reservation logic here.
-    // You can dispatch an action to delete the reservation.
-    toast.success('Reservation deleted successfully', reservationId);
+  const handleDeleteReservation = (reservationId, yid) => {
+    try {
+      // Show the confirmation dialog
+      setUserId(reservationId);
+      setYachtId(yid);
+      showConfirmation();
+    } catch (error) {
+      toast.error('Error deleting reservation:', error);
+    }
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      // Dispatch the deleteReservation action
+      const response = await dispatch(deleteReservation({ userId, yachtId }));
+
+      if (response.payload && response.payload.success) {
+        // Reservation deletion was successful
+        toast.success('Your reservation is cancelled successfully');
+      } else {
+        // Reservation deletion failed
+        toast.error('Something went wrong! Please try again later.');
+      }
+    } catch (error) {
+      // An error occurred while deleting the reservation
+      toast.error('Something went wrong!');
+    }
+
+    // Close the confirmation dialog
+    closeConfirmation();
+
+    // Refresh the reservation list
+    dispatch(fetchReservations({ userId: user.id }));
   };
 
   return (
@@ -33,14 +77,15 @@ function ReservationsList() {
         <h1>Loading ...</h1>
       ) : (
         <>
-          <h2 className='text-2xl font-semibold mb-4'>My Reservations</h2>
+          <h2 className='text-4xl text-green-600 font-bold pt-6 py-20'>
+            My Reservations
+          </h2>
           <table className='w-full border-collapse'>
             <thead>
               <tr>
                 <th className='text-left'>Yacht Model</th>
                 <th className='text-left'>Date</th>
                 <th className='text-left'>City</th>
-                <th className='text-left'>Reserved By</th>
                 <th className='text-left'>Actions</th>
               </tr>
             </thead>
@@ -53,14 +98,18 @@ function ReservationsList() {
                   <td className='py-2'>{reservation.yacht.model}</td>
                   <td className='py-2'>{formatDate(reservation.date)}</td>
                   <td className='py-2'>{reservation.city}</td>
-                  <td className='py-2'>{reservation.user.name}</td>
                   <td className='py-2'>
                     <button
                       type='button'
                       className='bg-red-500 text-white rounded px-4 py-2'
-                      onClick={() => handleDeleteReservation(reservation.id)}
+                      onClick={() =>
+                        handleDeleteReservation(
+                          reservation.id,
+                          reservation.yacht.id,
+                        )
+                      }
                     >
-                      Delete
+                      Cancel Reservation
                     </button>
                   </td>
                 </tr>
@@ -69,6 +118,12 @@ function ReservationsList() {
           </table>
         </>
       )}
+
+      <DeleteConfirmation
+        isOpen={isConfirmationOpen}
+        onCancel={closeConfirmation}
+        onConfirm={handleConfirmDelete}
+      />
     </div>
   );
 }
