@@ -5,7 +5,7 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import { switchToUpdate } from '../redux/yacht/yachtSlice';
 
-function AddYacht() {
+const AddYacht = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
 
@@ -154,6 +154,6 @@ function AddYacht() {
       </form>
     </div>
   );
-}
+};
 
 export default AddYacht;

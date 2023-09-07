@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-function ReservationForm({ yId = 1, yachtName = null, handleClose }) {
+const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
@@ -177,7 +177,7 @@ function ReservationForm({ yId = 1, yachtName = null, handleClose }) {
       </form>
     </div>
   );
-}
+};
 
 ReservationForm.defaultProps = {
   yachtName: '',

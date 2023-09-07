@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { getYacht } from '../../redux/yacht/yachtSlice';
 import ReservationForm from '../reservation/ReservationForm';
 
-function YachtDetail({ yachtId, handleView }) {
+const YachtDetail = ({ yachtId, handleView }) => {
   const yacht = useSelector((state) => state.yachts.yacht);
 
   const dispatch = useDispatch();
@@ -85,7 +85,7 @@ function YachtDetail({ yachtId, handleView }) {
       </div>
     </div>
   );
-}
+};
 
 YachtDetail.propTypes = {
   yachtId: PropTypes.number.isRequired,

@@ -3,13 +3,13 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 
-function Protected({ children }) {
+const Protected = ({ children }) => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   if (!isAuthenticated) {
     return <Navigate to='/login' replace />;
   }
   return children;
-}
+};
 
 Protected.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types

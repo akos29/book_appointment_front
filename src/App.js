@@ -13,7 +13,7 @@ import DeleteYacht from './components/DeleteYacht';
 import 'react-toastify/dist/ReactToastify.css';
 import Reserve from './components/reservation/Index';
 
-function App() {
+const App = () => {
   const user = useSelector((state) => state.auth);
 
   return (
@@ -76,6 +76,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
 export default App;
