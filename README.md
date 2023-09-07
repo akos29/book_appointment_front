@@ -1,4 +1,5 @@
 <a name="readme-top"></a>
+
 <div align="center">
 
   <h3><b>YoYachts</b></h3>
@@ -27,9 +28,7 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-
 # 📖 [YoYachts] <a name="about-project"></a>
-
 
 **YoYachts** is a react app for booking, where users can reserve their selected yachts. Also users can see their reservations, cancel the reservation as well as add more Yachts.
 
@@ -47,7 +46,7 @@
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://expressjs.com/">Ruby on Rails</a></li>
   </ul>
 </details>
 
@@ -57,7 +56,6 @@
     <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
   </ul>
 </details>
-
 
 ### Key Features <a name="key-features"></a>
 
@@ -69,7 +67,6 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- ## 🚀 Live Demo <a name="live-demo"></a>
 
 > Add a link to your deployed project.
@@ -78,17 +75,16 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
-
 ## 💻 Getting Started <a name="getting-started"></a>
-
 
 To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
 In order to run this project you need:
+
 - Visual studio code(VSC) or any code editor
-- Git, Gitbash
+- Git, GitBash/Terminal
 - Github account
 - A web browser
 
@@ -96,19 +92,18 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-
 Example commands:
 
 ```sh
   cd book_appointment_front
   git clone  https://github.com/akos29/book_appointment_front.git
 ```
+
 -
 
 ### Install
 
 Install this project with:
-
 
 Example command:
 
@@ -116,12 +111,20 @@ Example command:
   cd book_appointment_front
   npm install
 ```
+
 -
 
 ### Usage
 
-To run the project, execute the following command:
+Setup API endpoint first in the `.env` file,
 
+Example:
+
+```env
+REACT_APP_API_ENDPOINT=http://localhost:3001
+```
+
+To run the project, execute the following command:
 
 Example command:
 
@@ -132,6 +135,7 @@ Example command:
 ### Deployment
 
 You can deploy this project using:
+
 - Render
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -153,6 +157,7 @@ You can deploy this project using:
 - LinkedIn: [@LugardAgu](https://www.linkedin.com/in/lugardagu)
 
 👤 **Nana Vanina**
+
 - GitHub: [@vanina123](https://github.com/vanina123)
 - Twitter: [@Dufevan](https://twitter.com/DufeVanina)
 - LinkedIn: [Vanina](https://www.linkedin.com/in/larissa-vanina/)
@@ -163,7 +168,6 @@ You can deploy this project using:
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 🔭 Future Features <a name="future-features"></a>
 
@@ -183,19 +187,15 @@ Feel free to check the [issues page](../../issues/).
 
 ## ⭐️ Show your support <a name="support"></a>
 
-
 If you like this project kindly like and share. Thank you
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-
 
 We would like to thank [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/) for such a great design which guided us implement the work. And also Microverse for their support and great collaboration
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 ## 📝 License <a name="license"></a>
 
