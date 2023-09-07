@@ -48,10 +48,10 @@ function ReservationsList() {
     }
   };
 
-  const handleConfirmDelete = async () => {
+  const handleConfirmDelete = () => {
     try {
       // Dispatch the deleteReservation action
-      const response = await dispatch(deleteReservation({ userId, yachtId }));
+      const response = dispatch(deleteReservation({ userId, yachtId }));
 
       if (response.payload && response.payload.success) {
         // Reservation deletion was successful
