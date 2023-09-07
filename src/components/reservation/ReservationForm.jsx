@@ -39,7 +39,7 @@ function ReservationForm({ yId = '', yachtName = null }) {
           },
         );
 
-        if (response.status === 201 || response.status ===200 ) {
+        if (response.status === 201 || response.status === 200) {
           const { data } = response;
           if (data.success) {
             toast.success(data.message);
