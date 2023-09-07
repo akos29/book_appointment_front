@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-function ReservationForm({ yId = '', yachtName = null, handleClose }) {
+function ReservationForm({ yId, yachtName = null, handleClose }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
@@ -86,7 +86,7 @@ function ReservationForm({ yId = '', yachtName = null, handleClose }) {
           </label>
         </div>
 
-        {yId ? (
+        {yId < 1 ? (
           <div className='mb-4'>
             <label
               htmlFor='yachtName'
@@ -175,12 +175,13 @@ function ReservationForm({ yId = '', yachtName = null, handleClose }) {
 ReservationForm.defaultProps = {
   yachtName: '',
   yId: 0,
-  handleClose: null,
+  handleClose: () => null,
 };
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
   yId: PropTypes.number,
+  // eslint-disable-next-line react/forbid-prop-types
   handleClose: PropTypes.func,
 };
 
