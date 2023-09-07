@@ -48,12 +48,15 @@ const ReservationsList = () => {
     }
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
     try {
       // Dispatch the deleteReservation action
-      const response = dispatch(deleteReservation({ userId, yachtId }));
+      const response = await dispatch(deleteReservation({ userId, yachtId }));
 
-      if (response.payload && response.payload.success) {
+      if (
+        (response.payload && response.payload.success) ||
+        response.status === 200
+      ) {
         // Reservation deletion was successful
         toast.success('Your reservation is cancelled successfully');
       } else {

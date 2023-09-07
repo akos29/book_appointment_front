@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-function ReservationForm({ yId = '', yachtName = null }) {
+function ReservationForm({ yId = '', yachtName = null, handleClose }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
@@ -43,6 +43,7 @@ function ReservationForm({ yId = '', yachtName = null }) {
           const { data } = response;
           if (data.success) {
             toast.success(data.message);
+            handleClose();
             setTimeout(() => {
               navigate('/reservations');
               dispatch(fetchReservations({ userId }));
@@ -174,11 +175,13 @@ function ReservationForm({ yId = '', yachtName = null }) {
 ReservationForm.defaultProps = {
   yachtName: '',
   yId: 0,
+  handleClose: null,
 };
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
   yId: PropTypes.number,
+  handleClose: PropTypes.func,
 };
 
 export default ReservationForm;
