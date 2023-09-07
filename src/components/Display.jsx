@@ -4,7 +4,7 @@ import { fetchYachts, getYacht } from '../redux/yacht/yachtSlice';
 import YachtDetail from './yacht/YachtDetail';
 import Loading from './Loading';
 
-function Display() {
+const Display = () => {
   const dispatch = useDispatch();
   const { yachts, loading, error, loaded } = useSelector(
     (store) => store.yachts,
@@ -74,6 +74,6 @@ function Display() {
   }
 
   return <div>{content}</div>;
-}
+};
 
 export default Display;

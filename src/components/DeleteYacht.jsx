@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { fetchYachts, deleteYacht } from '../redux/yacht/yachtSlice';
 import DeleteYachtConfirmation from './DeleteYachtConfirmation';
 
-function DeleteYacht() {
+const DeleteYacht = () => {
   const dispatch = useDispatch();
   const { yachts, loading, error, loaded } = useSelector(
     (store) => store.yachts,
@@ -103,5 +103,5 @@ function DeleteYacht() {
       />
     </div>
   );
-}
+};
 export default DeleteYacht;

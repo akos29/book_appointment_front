@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function DeleteYachtConfirmation({ isOpen, onCancel, onConfirm }) {
+const DeleteYachtConfirmation = ({ isOpen, onCancel, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
@@ -27,7 +27,7 @@ function DeleteYachtConfirmation({ isOpen, onCancel, onConfirm }) {
       </div>
     </div>
   );
-}
+};
 
 DeleteYachtConfirmation.defaultProps = {
   isOpen: true,

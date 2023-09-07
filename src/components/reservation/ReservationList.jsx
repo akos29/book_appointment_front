@@ -8,7 +8,7 @@ import {
 import DeleteConfirmation from '../DeleteConfirmation';
 import Loading from '../Loading';
 
-function ReservationsList() {
+const ReservationsList = () => {
   const { reservations, loading, loaded } = useSelector(
     (state) => state.reservations,
   );
@@ -149,6 +149,6 @@ function ReservationsList() {
       />
     </div>
   );
-}
+};
 
 export default ReservationsList;

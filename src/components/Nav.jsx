@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logout } from '../redux/auth/authSlice';
 import ReservationForm from './reservation/ReservationForm';
 
-function Navbar() {
+const Navbar = () => {
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
 
@@ -149,6 +149,6 @@ function Navbar() {
       </nav>
     </>
   );
-}
+};
 
 export default Navbar;

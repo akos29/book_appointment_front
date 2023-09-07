@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { register } from '../redux/auth/authSlice';
 
-function Register() {
+const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -98,6 +98,6 @@ function Register() {
       </form>
     </div>
   );
-}
+};
 
 export default Register;

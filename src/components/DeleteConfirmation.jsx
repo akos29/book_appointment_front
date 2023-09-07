@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function DeleteConfirmation({ isOpen, onCancel, onConfirm }) {
+const DeleteConfirmation = ({ isOpen, onCancel, onConfirm }) => {
   if (!isOpen) return null;
 
   return (
@@ -29,7 +29,7 @@ function DeleteConfirmation({ isOpen, onCancel, onConfirm }) {
       </div>
     </div>
   );
-}
+};
 
 DeleteConfirmation.defaultProps = {
   isOpen: true,

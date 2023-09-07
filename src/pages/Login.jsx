@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../redux/auth/authSlice';
 
-function Login() {
+const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -93,6 +93,6 @@ function Login() {
       </form>
     </div>
   );
-}
+};
 
 export default Login;
