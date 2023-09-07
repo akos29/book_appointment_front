@@ -52,7 +52,11 @@ export const deleteYacht = createAsyncThunk(
 const yachtsSlice = createSlice({
   name: 'yachts',
   initialState,
-  reducers: {},
+  reducers: {
+    switchToUpdate: (state) => {
+      state.loaded = false;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchYachts.pending, (state) => {
       state.loading = true;
@@ -91,5 +95,7 @@ const yachtsSlice = createSlice({
     });
   },
 });
+
+export const { switchToUpdate } = yachtsSlice.actions;
 
 export default yachtsSlice.reducer;

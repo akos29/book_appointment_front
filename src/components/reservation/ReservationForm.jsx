@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-function ReservationForm({ yId = '', yachtName = null, handleClose = null }) {
+function ReservationForm({ yId = 1, yachtName = null, handleClose }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
@@ -49,18 +49,13 @@ function ReservationForm({ yId = '', yachtName = null, handleClose = null }) {
 
       if (response.status === 201) {
         const { data } = response;
-        if (data.success) {
-          toast.success(data.message);
-          setDate('');
-          setCity('');
-          setIsSubmitting(false);
-          handleClose();
-          navigate('/reservations');
-          dispatch(fetchReservations({ userId }));
-        } else {
-          toast.error(data.message);
-          setIsSubmitting(false); // Reset submission state on failure
-        }
+        toast.success(data.message);
+        setDate('');
+        setCity('');
+        setIsSubmitting(false);
+        handleClose();
+        navigate('/reservations');
+        dispatch(fetchReservations({ userId }));
       } else {
         throw new Error(response.statusText);
       }
@@ -95,7 +90,7 @@ function ReservationForm({ yId = '', yachtName = null, handleClose = null }) {
           </label>
         </div>
 
-        {yId ? (
+        {yId >= 1 ? (
           <div className='mb-4'>
             <label
               htmlFor='yachtName'
@@ -192,8 +187,9 @@ ReservationForm.defaultProps = {
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
-  handleClose: PropTypes.func,
   yId: PropTypes.number,
+  // eslint-disable-next-line react/forbid-prop-types
+  handleClose: PropTypes.any,
 };
 
 export default ReservationForm;

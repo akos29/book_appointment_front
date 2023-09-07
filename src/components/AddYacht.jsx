@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { switchToUpdate } from '../redux/yacht/yachtSlice';
 
 function AddYacht() {
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   const [model, setModel] = useState('');
   const [captainName, setCaptainName] = useState('');
@@ -40,6 +42,7 @@ function AddYacht() {
           const responseData = response.data;
           if (responseData.data.id) {
             toast.success('Successfully added yacht');
+            dispatch(switchToUpdate());
             setTimeout(() => {
               navigate('/');
             }, 3500);
