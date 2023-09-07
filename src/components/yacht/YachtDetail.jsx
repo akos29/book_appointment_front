@@ -18,7 +18,7 @@ function YachtDetail({ yachtId, handleView }) {
   }, [dispatch, yachtId, yacht.id]);
 
   return showReservationForm ? (
-    <ReservationForm yId={yachtId} yachtName={yacht.model} />
+    <ReservationForm yId={Number(yacht.id)} yachtName={yacht.model} />
   ) : (
     <div className='flex flex-col mt-16 lg:flex-row space-y-9 space-x-9 justify-between ml-0'>
       <div className='grow aspect-w-16 aspect-h-9 lg:aspect-none max-w-[90%] md:max-w-[900px] self-center'>
@@ -88,7 +88,7 @@ function YachtDetail({ yachtId, handleView }) {
 }
 
 YachtDetail.propTypes = {
-  yachtId: PropTypes.string.isRequired,
+  yachtId: PropTypes.number.isRequired,
   handleView: PropTypes.func.isRequired,
 };
 
