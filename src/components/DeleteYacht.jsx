@@ -43,7 +43,10 @@ const DeleteYacht = () => {
     try {
       // Dispatch the deleteYacht action to delete the yacht
       const response = await dispatch(deleteYacht(yachtId));
-      if (deleteYacht.fulfilled.match(response)) {
+      if (
+        deleteYacht.fulfilled.match(response) ||
+        response.payload.success === 200
+      ) {
         // Yacht deletion was successful
         toast.success('Yacht deleted successfully');
       } else {

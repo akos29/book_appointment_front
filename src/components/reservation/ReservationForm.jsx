@@ -7,11 +7,10 @@ import PropTypes from 'prop-types';
 import { fetchReservations } from '../../redux/reservation/reservationSlice';
 import { fetchYachts } from '../../redux/yacht/yachtSlice';
 
-const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
+function ReservationForm({ yId, yachtName = null, handleClose }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
-  const [isSubmitting, setIsSubmitting] = useState(false); // For form submission state
 
   const dispatch = useDispatch();
 
@@ -23,45 +22,41 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (!date || !city || !yachtId) {
-      toast.error('Please fill in all fields.');
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      const response = await axios.post(
-        `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
-        {
-          date,
-          city,
-          user_id: userId,
-          yacht_id: yachtId,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
+    if (yachtId) {
+      try {
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_ENDPOINT}/yachts/${yachtId}/reservations`,
+          {
+            date,
+            city,
+            user_id: userId,
+            yacht_id: yachtId,
           },
-        },
-      );
+          {
+            headers: {
+              'Content-Type': 'application/json', // Send data as JSON
+            },
+          },
+        );
 
-      if (response.status === 201) {
-        const { data } = response;
-        toast.success(data.message);
-        setDate('');
-        setCity('');
-        setIsSubmitting(false);
-        handleClose();
-        navigate('/reservations');
-        dispatch(fetchReservations({ userId }));
-      } else {
-        throw new Error(response.statusText);
+        if (response.status === 201 || response.status === 200) {
+          const { data } = response;
+          if (data.success) {
+            toast.success(data.message);
+            handleClose();
+            setTimeout(() => {
+              navigate('/reservations');
+              dispatch(fetchReservations({ userId }));
+            }, 1500);
+          } else {
+            toast.error(data.message);
+          }
+        } else {
+          throw new Error(response.statusText);
+        }
+      } catch (error) {
+        toast.error('An error occurred. Please try again later.');
       }
-    } catch (error) {
-      toast.error('An error occurred. Please try again later.');
-      setIsSubmitting(false); // Reset submission state on error
     }
   };
 
@@ -72,25 +67,26 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
   }, [yachts, dispatch]);
 
   return (
-    <div>
+    <div className='p-4'>
       <form onSubmit={handleSubmit} className='max-w-sm mx-auto'>
         <div className='mb-4'>
           <label
             htmlFor='userName'
             className='block text-gray-700 font-semibold mb-2'
           >
+            {' '}
             User Name
             <input
               type='text'
               id='userName'
               value={user.name}
               disabled
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
             />
           </label>
         </div>
 
-        {yId >= 1 ? (
+        {yId < 1 ? (
           <div className='mb-4'>
             <label
               htmlFor='yachtName'
@@ -102,7 +98,7 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
                 id='yachtName'
                 value={yachtName}
                 disabled
-                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
+                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
               />
             </label>
           </div>
@@ -118,7 +114,7 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
                 value={yachtId}
                 onChange={(e) => setYachtId(e.target.value)}
                 required
-                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
+                className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
               >
                 <option value=''>Select Yacht Name</option>
                 {yachts.map((yacht) => (
@@ -143,8 +139,8 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
               value={date}
               onChange={(e) => setDate(e.target.value)}
               required
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
-            />
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />{' '}
           </label>
         </div>
 
@@ -160,36 +156,33 @@ const ReservationForm = ({ yId = 1, yachtName = null, handleClose }) => {
               value={city}
               onChange={(e) => setCity(e.target.value)}
               required
-              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-green-500'
-            />
+              className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
+            />{' '}
           </label>
         </div>
 
         <button
           type='submit'
-          className={`bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-300 ${
-            isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
-          disabled={isSubmitting}
+          className='bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-300'
         >
-          {isSubmitting ? 'Submitting...' : 'Reserve'}
+          Reserve
         </button>
       </form>
     </div>
   );
-};
+}
 
 ReservationForm.defaultProps = {
   yachtName: '',
-  yId: 0,
-  handleClose: null,
+  yId: 1,
+  handleClose: () => null,
 };
 
 ReservationForm.propTypes = {
   yachtName: PropTypes.string,
   yId: PropTypes.number,
   // eslint-disable-next-line react/forbid-prop-types
-  handleClose: PropTypes.any,
+  handleClose: PropTypes.func,
 };
 
 export default ReservationForm;
