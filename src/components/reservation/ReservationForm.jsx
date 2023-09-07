@@ -174,7 +174,7 @@ function ReservationForm({ yId, yachtName = null, handleClose }) {
 
 ReservationForm.defaultProps = {
   yachtName: '',
-  yId: 0,
+  yId: 1,
   handleClose: () => null,
 };
 

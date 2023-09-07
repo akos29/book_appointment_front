@@ -23,7 +23,7 @@ const Navbar = () => {
   return (
     <>
       {/* Mobile View Nav */}
-      <nav className='mobile-navbar z-[9999]'>
+      <nav className='mobile-navbar z-[9997]'>
         <h3 className='ml-3 font-bold'>YoYachts</h3>
 
         <button
