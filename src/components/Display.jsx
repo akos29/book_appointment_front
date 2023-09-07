@@ -31,7 +31,9 @@ function Display() {
   if (loading) {
     content = <Loading />;
   } else if (view) {
-    content = <YachtDetail yachtId={selectedYachtId} handleView={handleView} />;
+    content = (
+      <YachtDetail yachtId={Number(selectedYachtId)} handleView={handleView} />
+    );
   } else if (error) {
     content = <b className='text-red-500'>{String(error)}</b>;
   } else {
