@@ -1,13 +1,115 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #efefef;
+  width: 100%;
+  position: relative;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family:
+    source-code-pro,
+    Menlo,
+    Monaco,
+    Consolas,
+    'Courier New',
     monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.z-highest {
+  /* z-index: 9999 !important; */
+  z-index: inherit !important;
+}
+
+.details {
+  width: 100%;
+  padding: 0.5rem;
+  margin-left: 0;
+}
+
+.nav-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+  width: 250px;
+  background-color: #fff;
+}
+
+.nav-cont h2 {
+  font-family: cursive;
+  font-size: 40px;
+  text-decoration: underline;
+  color: rgb(48, 46, 46);
+  rotate: -15deg;
+  padding-left: 10px;
+  margin-top: 90px;
+  margin-bottom: -80px;
+  font-weight: bolder;
+}
+
+.nav-item {
+  color: rgb(48, 46, 46);
+
+  @apply block py-5;
+}
+
+.nav-item.active {
+  @apply font-semibold;
+}
+
+.nav-item > button {
+  @apply p-0 m-0 inline;
+}
+
+.nav-item:hover {
+  background-color: #97bf0f;
+  color: #fff;
+  cursor: pointer;
+}
+
+.nav-cont ul {
+  list-style: none;
+  gap: 6px;
+  width: 250px;
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  margin-top: 230px;
+  font-size: 18px;
+  font-weight: 900;
+  justify-content: center;
+}
+
+.nav-cont li {
+  height: 50px;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.mobile-navbar {
+  @apply flex md:hidden bg-white fixed top-0 left-0 w-full h-auto
+    max-h-16 py-4 justify-between items-center px-1 border-b-2 border-gray-300 shadow-sm;
+}
+
+.ml-fix {
+  @apply w-full md:w-[90%] lg:max-w-[540px] mx-auto;
 }

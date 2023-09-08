@@ -1,43 +1,221 @@
 <a name="readme-top"></a>
 
-<!--
-!!! IMPORTANT !!!
-This README is an example of how you could professionally present your codebase. 
-Writing documentation is a crucial part of your work as a professional software developer and cannot be ignored. 
+<div align="center">
 
-You should modify this file to match your project and remove sections that don't apply.
+  <h3><b>YoYachts</b></h3>
 
-REQUIRED SECTIONS:
-- Table of Contents
-- About the Project
-  - Built With
-  - Live Demo
-- Getting Started
-- Authors
-- Future Features
-- Contributing
-- Show your support
-- Acknowledgements
-- License
-
-OPTIONAL SECTIONS:
-- FAQ
-
-After you're finished please remove all the comments and instructions!
-
-For more information on the importance of a professional README for your repositories: https://github.com/microverseinc/curriculum-transversal-skills/blob/main/documentation/articles/readme_best_practices.md
--->
+</div>
+<a name="readme-top"></a>
 
 <div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
 
-  <h3><b>Microverse README Template</b></h3>
+  <h3><b>YoYachts</b></h3>
 
 </div>
 
-<!-- TABLE OF CONTENTS -->
+# 📗 Table of Contents
+
+- [📖 About the Project](#about-project)
+  - [🛠 Built With](#built-with)
+    - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
+  - [🚀 Live Demo](#live-demo)
+- [ Kanban Board](#kanban-board)
+- [💻 Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Setup](#setup)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
+  - [Deployment](#deployment)
+- [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
+- [🤝 Contributing](#contributing)
+- [⭐️ Show your support](#support)
+- [🙏 Acknowledgements](#acknowledgements)
+- [❓ FAQ (OPTIONAL)](#faq)
+- [📝 License](#license)
+
+# 📖 [YoYachts] <a name="about-project"></a>
+
+**YoYachts** is a react app for booking, where users can reserve their selected yachts. Also users can see their reservations, cancel the reservation as well as add more Yachts.
+
+## 🛠 Built With <a name="built-with"></a>
+
+### Tech Stack <a name="tech-stack"></a>
+
+<details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://reactjs.org/">React.js</a></li>
+  </ul>
+</details>
+
+<details>
+  <summary>Server</summary>
+  <ul>
+    <li><a href="https://expressjs.com/">Ruby on Rails</a></li>
+  </ul>
+</details>
+
+<details>
+<summary>Database</summary>
+  <ul>
+    <li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+  </ul>
+</details>
+
+### Key Features <a name="key-features"></a>
+
+- **[Display of All Yatch]**
+- **[Add and Delete Yatch]**
+- **[Add reservation]**
+- **[View all reservation]**
+- **[Responsive App]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🚀 Live Demo <a name="live-demo"></a>
+
+- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [API Deployment Link](https://yacht-booking-api.onrender.com/)
+- [API GitHub repository Link](https://github.com/akos29/book_appointment/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Kanban Board: <a name="kanban-board"></a>
+
+[Kanban Board Link](https://github.com/users/akos29/projects/6)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 💻 Getting Started <a name="getting-started"></a>
+
+To get a local copy up and running, follow these steps.
+
+### Prerequisites
+
+In order to run this project you need:
+
+- Visual studio code(VSC) or any code editor
+- Git, GitBash/Terminal
+- Github account
+- A web browser
+
+### Setup
+
+Clone this repository to your desired folder:
+
+Example commands:
+
+```sh
+  cd book_appointment_front
+  git clone  https://github.com/akos29/book_appointment_front.git
+```
+
+-
+
+### Install
+
+Install this project with:
+
+Example command:
+
+```sh
+  cd book_appointment_front
+  npm install
+```
+
+-
+
+### Usage
+
+Setup API endpoint first in the `.env` file,
+
+Example:
+
+```env
+REACT_APP_API_ENDPOINT=http://localhost:3001
+```
+
+To run the project, execute the following command:
+
+Example command:
+
+```sh
+  npm start
+```
+
+### Deployment
+
+You can deploy this project using:
+
+- Render
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- AUTHORS -->
+
+## 👥 Authors <a name="authors"></a>
+
+👤 **Mahabub Alam**
+
+- GitHub: [@mahabubx7](https://github.com/mahabubx7)
+- Twitter: [@mahabub\_\_7](https://twitter.com/mahabub__7)
+- LinkedIn: [in/mahabubx7](https://linkedin.com/in/mahabubx7)
+
+👤 **Lugard Agu**
+
+- GitHub: [@lugard1](https://github.com/lugard1)
+- Twitter: [@Dsn3kings](https://twitter.com/Dsn3kings)
+- LinkedIn: [@LugardAgu](https://www.linkedin.com/in/lugardagu)
+
+👤 **Nana Vanina**
+
+- GitHub: [@vanina123](https://github.com/vanina123)
+- Twitter: [@Dufevan](https://twitter.com/DufeVanina)
+- LinkedIn: [Vanina](https://www.linkedin.com/in/larissa-vanina/)
+
+👤 **Kibrewossen Y Mekasha**
+
+- GitHub: [@akos29](https://github.com/akos29)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- **[More implementation in the app]**
+- **[Add Notications]**
+- **[improve on styling]**
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🤝 Contributing <a name="contributing"></a>
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## ⭐️ Show your support <a name="support"></a>
+
+If you like this project kindly like and share. Thank you
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+We would like to thank [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/) for such a great design which guided us implement the work. And also Microverse for their support and great collaboration
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## 📝 License <a name="license"></a>
+
+This project is [MIT](./MIT.md) licensed.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 # 📗 Table of Contents
 
@@ -61,19 +239,13 @@ For more information on the importance of a professional README for your reposit
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-<!-- PROJECT DESCRIPTION -->
+# 📖 [YoYachts] <a name="about-project"></a>
 
-# 📖 [your_project_name] <a name="about-project"></a>
-
-> Describe your project in 1 or 2 sentences.
-
-**[your_project__name]** is a...
+**YoYachts** is a react app for booking, where users can reserve their selected yachts. Also users can see their reservations, cancel the reservation as well as add more Yachts.
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
-
-> Describe the tech stack and include only the relevant sections that apply to your project.
 
 <details>
   <summary>Client</summary>
@@ -85,7 +257,7 @@ For more information on the importance of a professional README for your reposit
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://expressjs.com/">Express.js</a></li>
+    <li><a href="https://expressjs.com/">Ruby on Rails</a></li>
   </ul>
 </details>
 
@@ -96,33 +268,24 @@ For more information on the importance of a professional README for your reposit
   </ul>
 </details>
 
-<!-- Features -->
-
 ### Key Features <a name="key-features"></a>
 
-> Describe between 1-3 key features of the application.
-
-- **[key_feature_1]**
-- **[key_feature_2]**
-- **[key_feature_3]**
+- **[Display of All Yatch]**
+- **[Add and Delete Yatch]**
+- **[Add reservation]**
+- **[View all reservation]**
+- **[Responsive App]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-> Add a link to your deployed project.
-
-- [Live Demo Link](https://google.com)
-
+- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [API Deployment Link](https://yacht-booking-api.onrender.com/)
+- [API GitHub repository Link](https://github.com/akos29/book_appointment/)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- GETTING STARTED -->
-
 ## 💻 Getting Started <a name="getting-started"></a>
-
-> Describe how a new developer could make use of your project.
 
 To get a local copy up and running, follow these steps.
 
@@ -130,75 +293,60 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-<!--
-Example command:
-
-```sh
- gem install rails
-```
- -->
+- Visual studio code(VSC) or any code editor
+- Git, GitBash/Terminal
+- Github account
+- A web browser
 
 ### Setup
 
 Clone this repository to your desired folder:
 
-<!--
 Example commands:
 
 ```sh
-  cd my-folder
-  git clone git@github.com:myaccount/my-project.git
+  cd book_appointment_front
+  git clone  https://github.com/akos29/book_appointment_front.git
 ```
---->
+
+-
 
 ### Install
 
 Install this project with:
 
-<!--
 Example command:
 
 ```sh
-  cd my-project
-  gem install
+  cd book_appointment_front
+  npm install
 ```
---->
+
+-
 
 ### Usage
 
+Setup API endpoint first in the `.env` file,
+
+Example:
+
+```env
+REACT_APP_API_ENDPOINT=http://localhost:3001
+```
+
 To run the project, execute the following command:
 
-<!--
 Example command:
 
 ```sh
-  rails server
+  npm start
 ```
---->
-
-### Run tests
-
-To run tests, run the following command:
-
-<!--
-Example command:
-
-```sh
-  bin/rails test test/models/article_test.rb
-```
---->
 
 ### Deployment
 
 You can deploy this project using:
 
-<!--
-Example:
-
-```sh
-
-```
- -->
+- Render
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -206,35 +354,38 @@ Example:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
+👤 **Mahabub Alam**
 
-👤 **Author1**
+- GitHub: [@mahabubx7](https://github.com/mahabubx7)
+- Twitter: [@mahabub\_\_7](https://twitter.com/mahabub__7)
+- LinkedIn: [in/mahabubx7](https://linkedin.com/in/mahabubx7)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **Lugard Agu**
 
-👤 **Author2**
+- GitHub: [@lugard1](https://github.com/lugard1)
+- Twitter: [@Dsn3kings](https://twitter.com/Dsn3kings)
+- LinkedIn: [@LugardAgu](https://www.linkedin.com/in/lugardagu)
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+👤 **Nana Vanina**
+
+- GitHub: [@vanina123](https://github.com/vanina123)
+- Twitter: [@Dufevan](https://twitter.com/DufeVanina)
+- LinkedIn: [Vanina](https://www.linkedin.com/in/larissa-vanina/)
+
+👤 **Kibrewossen Y Mekasha**
+
+- GitHub: [@akos29](https://github.com/akos29)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/kibrewossen-y-mekasha/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-> Describe 1 - 3 features you will add to the project.
-
-- [ ] **[new_feature_1]**
-- [ ] **[new_feature_2]**
-- [ ] **[new_feature_3]**
+- **[More implementation in the app]**
+- **[Add Notications]**
+- **[improve on styling]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- CONTRIBUTING -->
 
 ## 🤝 Contributing <a name="contributing"></a>
 
@@ -244,48 +395,20 @@ Feel free to check the [issues page](../../issues/).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- SUPPORT -->
-
 ## ⭐️ Show your support <a name="support"></a>
 
-> Write a message to encourage readers to support your project
-
-If you like this project...
+If you like this project kindly like and share. Thank you
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 
-> Give credit to everyone who inspired your codebase.
-
-I would like to thank...
+We would like to thank [Creative Commons license of the design](https://creativecommons.org/licenses/by-nc/4.0/) for such a great design which guided us implement the work. And also Microverse for their support and great collaboration
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ (OPTIONAL) <a name="faq"></a>
-
-> Add at least 2 questions new developers would ask when they decide to use your project.
-
-- **[Question_1]**
-
-  - [Answer_1]
-
-- **[Question_2]**
-
-  - [Answer_2]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- LICENSE -->
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](./LICENSE) licensed.
-
-_NOTE: we recommend using the [MIT license](https://choosealicense.com/licenses/mit/) - you can set it up quickly by [using templates available on GitHub](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository). You can also use [any other license](https://choosealicense.com/licenses/) if you wish._
+This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
