@@ -14,7 +14,7 @@ function ReservationForm({ yId, yachtName = null, handleClose }) {
   const [error, setError] = useState('');
 
   const handleCityChange = (cityName) => {
-    setCity(cityName)
+    setCity(cityName);
     setCity(cityName);
 
     // City name validation (only alphabetic characters and not empty)
@@ -168,13 +168,12 @@ function ReservationForm({ yId, yachtName = null, handleClose }) {
               id='city'
               value={city}
               // onChange={(e) => setCity(e.target.value)}
-              onChange={(e)=>handleCityChange(e.target.value)}
-     
+              onChange={(e) => handleCityChange(e.target.value)}
               required
               className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
             />{' '}
           </label>
-          {error && <div className="error">{error}</div>}
+          {error && <div className='error'>{error}</div>}
         </div>
 
         <button
