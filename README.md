@@ -75,19 +75,19 @@
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Demo <a name="live-demo"></a> 
+## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com) 
-- [API Deployment Link](https://yacht-booking-api.onrender.com/) 
-- [API GitHub repository Link](https://github.com/akos29/book_appointment/) 
+- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [API Deployment Link](https://yacht-booking-api.onrender.com/)
+- [API GitHub repository Link](https://github.com/akos29/book_appointment/)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Kanban Board: <a name="kanban-board"></a>
 
 [Kanban Board Link](https://github.com/users/akos29/projects/6)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
@@ -278,12 +278,12 @@ This project is [MIT](./MIT.md) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🚀 Live Demo <a name="live-demo"></a> 
+## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link](https://yourdeployedapplicationlink.com) 
-- [API Deployment Link](https://yacht-booking-api.onrender.com/) 
-- [API GitHub repository Link](https://github.com/akos29/book_appointment/) 
-<p align="right">(<a href="#readme-top">back to top</a>)</p> 
+- [Live Demo Link](https://yourdeployedapplicationlink.com)
+- [API Deployment Link](https://yacht-booking-api.onrender.com/)
+- [API GitHub repository Link](https://github.com/akos29/book_appointment/)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 💻 Getting Started <a name="getting-started"></a>
 

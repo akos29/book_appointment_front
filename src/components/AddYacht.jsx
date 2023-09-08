@@ -11,7 +11,7 @@ const AddYacht = () => {
 
   const [model, setModel] = useState('');
   const [captainName, setCaptainName] = useState('');
-  const [price, setPrice] = useState(0);
+  const [price, setPrice] = useState(50);
   const [userId] = useState(user.id);
   const [yachtImage, setYachtImage] = useState(0);
   const navigate = useNavigate();
@@ -107,6 +107,7 @@ const AddYacht = () => {
             Price
             <input
               type='number'
+              min={50}
               placeholder='Price'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
