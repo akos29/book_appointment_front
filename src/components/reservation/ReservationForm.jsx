@@ -11,6 +11,19 @@ function ReservationForm({ yId, yachtName = null, handleClose }) {
   const [date, setDate] = useState('');
   const [city, setCity] = useState('');
   const [yachtId, setYachtId] = useState(yId);
+  const [error, setError] = useState('');
+
+  const handleCityChange = (cityName) => {
+    setCity(cityName)
+    setCity(cityName);
+
+    // City name validation (only alphabetic characters and not empty)
+    if (!/^[a-zA-Z\s]+$/.test(cityName)) {
+      setError('City name is invalid. Please use only alphabetic characters.');
+    } else {
+      setError('');
+    }
+  };
 
   const dispatch = useDispatch();
 
@@ -154,11 +167,14 @@ function ReservationForm({ yId, yachtName = null, handleClose }) {
               type='text'
               id='city'
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              // onChange={(e) => setCity(e.target.value)}
+              onChange={(e)=>handleCityChange(e.target.value)}
+     
               required
               className='w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500'
             />{' '}
           </label>
+          {error && <div className="error">{error}</div>}
         </div>
 
         <button
